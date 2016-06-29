@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160620124552) do
+ActiveRecord::Schema.define(version: 20160629142855) do
 
   create_table "associated_roles", force: :cascade do |t|
     t.integer  "object_id",   limit: 4

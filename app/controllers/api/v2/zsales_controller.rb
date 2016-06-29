@@ -1,7 +1,7 @@
 class Api::V2::ZsalesController < ApplicationController
 
 	def rds
- 		retailer = Zsale.where('lower(location_code) = ?',params[:location_code].downcase)
+ 		retailer = Zsale.where('lower(location_code) = ?',params[:location_code].downcase).order('sales_channel asc')
   		render :json => {result: true,object: retailer.pluck(:sales_channel).uniq}
  	end
 
