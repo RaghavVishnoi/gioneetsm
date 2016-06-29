@@ -169,7 +169,7 @@ $("#download").attr("class","active")
 	        nd.push($(this).val())
 	    });
 
-	    if(nd.length == 0){
+	    if(nd.length == 0 || nd == ""){
 	    	alert('please select atleast one nd!')
 	    }else{	
 			$.ajax({
