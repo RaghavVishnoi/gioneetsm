@@ -1,14 +1,14 @@
 # config valid only for Capistrano 3.1
 lock '3.5.0'
 
-set :application, 'gquestion'
+set :application, 'gionee'
 set :repo_url, 'ssh://xp-dev.com/GIONEE_GQUESTION_ROR' # Edit this to match your repository
 set :branch, :mum
 set :deploy_to, '/var/www/gquestions/mum'
 set :pty, true
 set :linked_dirs, fetch(:linked_dirs, []).push('public/uploads','public/retailer_csv','public/sales_beat_csv','public/target_csv')
 #set :linked_files, %w{config/database.yml config/application.yml}
-set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads public/retailer_csv public/sales_beat_csv public/target_csv}
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
 set :keep_releases, 5
 set :rvm_type, :user
 set :rvm_ruby_version, 'ruby-2.2.1' # Edit this if you are using MRI Ruby
@@ -30,3 +30,17 @@ set :puma_preload_app, false
 set :bundle_gemfile, "/var/www/gquestions/mum"
 
  
+
+namespace :deploy do
+
+  after :restart, :clear_cache do
+    on roles(:web), in: :groups, limit: 3, wait: 10 do
+      # Here we can do anything such as:
+      within release_path do
+      	execute :bundle_install
+        execute :rake, 'db:migrate'
+      end
+    end
+  end
+
+end

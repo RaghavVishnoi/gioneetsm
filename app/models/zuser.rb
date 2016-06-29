@@ -1,7 +1,7 @@
 class Zuser < ActiveRecord::Base
 
  	
-	has_many :parent_locations,:class => 'Zuser',foreign_key: 'parent_location_code', primary_key: 'parent_location_code'
+	#has_many :parent_locations,:class => 'Zuser',foreign_key: 'parent_location_code', primary_key: 'parent_location_code'
 
 	has_many :retailers,foreign_key: 'location_code'
 	has_many :sales_beats,foreign_key: 'location_code'

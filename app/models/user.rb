@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   has_many :sales_beats
   has_many :targets
   has_many :user_activities
-  belongs_to :zuser,:class => 'Zuser',foreign_key: 'location_code'
+  #belongs_to :zuser,:class => 'Zuser',foreign_key: 'location_code'
 
   validates :first_name,presence: true
   validate  :last_name
