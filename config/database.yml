@@ -25,7 +25,7 @@ test:
 
 production:
   <<: *default
-  database: gionee_mum
+  database: gquestions_mum
   username: root
   password: FGhuytR%t4RfY^5rtY8uh
   timeout: 5000
