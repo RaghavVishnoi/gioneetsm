@@ -1,4 +1,4 @@
-VERSION = 2
+VERSION = 1
 
 CSV_EMAIL = "raghav.singh@lptpl.com"
 CSV_TYPE = ["WOD Expansion","Daily Sales Beat","Gionee Good Morning"]
