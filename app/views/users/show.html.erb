@@ -40,8 +40,8 @@
 	<li><i class="fa-li fa fa-user"></i>Account: <span><%=Zsale.where(location_code: Zuser.where(email: @user.email).pluck(:location_code)).pluck(:nd).uniq.join(',')%></span></li>
 	
 	<li><i class="fa-li fa fa-shield"></i>Reporting Manager: <span>
-		<%=Zuser.where(location_code: Zuser.where(email: @user.email).pluck(:parent_location_code)).pluck(:person_name).join(',')
-	%></span></li>
+		<%=Zuser.where(location_code: Zuser.where(email: @user.email).pluck(:parent_location_code)).pluck(:person_name).join(',')%>
+	</span></li>
 	
 	</ul>
 	</div>
