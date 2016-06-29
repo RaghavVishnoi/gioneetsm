@@ -1,5 +1,5 @@
 class ChangeColumnValueTargetIntoTargets < ActiveRecord::Migration
   def change
-  	change_column :targets,:value_target,:int,limit: 10
+  	change_column :targets,:value_target,:string
   end
 end

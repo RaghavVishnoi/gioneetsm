@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160629143640) do
+ActiveRecord::Schema.define(version: 20160629143641) do
 
   create_table "associated_roles", force: :cascade do |t|
     t.integer  "object_id",   limit: 4
@@ -175,7 +175,7 @@ ActiveRecord::Schema.define(version: 20160629143640) do
     t.string   "mum",            limit: 255
     t.string   "rds",            limit: 255
     t.string   "fos",            limit: 255
-    t.integer  "value_target",   limit: 4
+    t.string   "value_target",   limit: 255
     t.integer  "volume_target",  limit: 4
     t.text     "plan_remarks",   limit: 65535
     t.text     "review_remarks", limit: 65535
