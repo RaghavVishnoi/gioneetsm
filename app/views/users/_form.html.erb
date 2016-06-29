@@ -177,7 +177,7 @@
                <%if type == 'new'%>   
                   <%= f.text_field :location_code,:required => "required",class: "form-control",placeholder: "Location Code"%> 
                 <%else%>
-                  <%= f.text_field :location_code,:required => "required",class: "form-control",placeholder: "Location Code",:value => User.location_code(@user).join(','),:readonly => true%> 
+                  <%= f.text_field :location_code,class: "form-control",placeholder: "Location Code",:value => User.location_code(@user).join(','),:readonly => true%> 
                 <%end%>        
                 </div>
               </div>
