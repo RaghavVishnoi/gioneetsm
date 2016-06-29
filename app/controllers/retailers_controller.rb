@@ -49,8 +49,8 @@ class RetailersController < ApplicationController
           format.json { render :show, status: :created, location: @retailer }
       else
         if @retailer.save!
-          if params[:is_new] == 1
-            tmpCount = Retailer.where('length(tmpCount) != 0').order('updated_at asc').last
+          if params[:is_new] == 1 
+            tmpCount = Retailer.where('length(tmpCount) != 0').order('updated_at').last
             tmpData = Constant.tempCode(tmpCount)
             @retailer.update(tmpCode: tmpData[:tmpCode],tmpCount: tmpData[:tmpCount],retailer_code: '')  
           end
