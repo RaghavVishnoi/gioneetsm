@@ -2,9 +2,9 @@
 lock '3.5.0'
 
 set :application, 'gquestion'
-set :repo_url, 'https://github.com/RaghavVishnoi/gquestions.git' # Edit this to match your repository
-set :branch, :master
-set :deploy_to, '/var/www/gquestions'
+set :repo_url, 'ssh://xp-dev.com/GIONEE_GQUESTION_ROR' # Edit this to match your repository
+set :branch, :mum
+set :deploy_to, '/var/www/gquestions/mum'
 set :pty, true
 set :linked_dirs, fetch(:linked_dirs, []).push('public/uploads','public/retailer_csv','public/sales_beat_csv','public/target_csv')
 #set :linked_files, %w{config/database.yml config/application.yml}
@@ -21,12 +21,12 @@ set :puma_conf, "#{shared_path}/puma.rb"
 set :puma_access_log, "#{shared_path}/log/puma_error.log"
 set :puma_error_log, "#{shared_path}/log/puma_access.log"
 set :puma_role, :app
-set :puma_env, fetch(:rack_env, fetch(:rails_env, 'staging'))
+set :puma_env, fetch(:rack_env, fetch(:rails_env, 'production'))
 set :puma_threads, [0, 8]
 set :puma_workers, 0
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true
 set :puma_preload_app, false
-set :bundle_gemfile, "/var/www/gquestions"
+set :bundle_gemfile, "/var/www/gquestions/mum"
 
  

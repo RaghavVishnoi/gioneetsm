@@ -116,7 +116,7 @@ GEM
     minitest (5.9.0)
     multi_json (1.12.1)
     multi_xml (0.5.5)
-    mysql2 (0.3.21)
+    mysql2 (0.4.4)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (3.2.0)
@@ -221,7 +221,7 @@ DEPENDENCIES
   httparty (~> 0.13.7)
   jbuilder (~> 2.0)
   jquery-rails
-  mysql2 (~> 0.3.18)
+  mysql2 (~> 0.4.4)
   rails (= 4.2.5)
   rails-i18n (~> 4.0, >= 4.0.8)
   rufus-scheduler (= 3.0.2)
@@ -236,4 +236,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   1.10.6
+   1.12.5

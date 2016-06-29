@@ -15,15 +15,15 @@
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server '43.252.88.222', user: 'root', roles: %w{web app db}, my_property: :my_value
+# server '43.252.88.222', user: 'root', roles: %w{web app db}, my_property: :my_value
 
 
 
 
-set :ssh_options, {
-  keys: %w{~/.ssh/id_rsa},
-  forward_agent: true
-}
+# set :ssh_options, {
+#   keys: %w{~/.ssh/id_rsa},
+#   forward_agent: true
+# }
 # Custom SSH Options
 # ==================
 # You may pass any option but keep in mind that net/ssh understands a

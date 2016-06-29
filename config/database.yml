@@ -23,9 +23,9 @@ test:
   <<: *default
   database: db/test.sqlite3
 
-staging:
+production:
   <<: *default
-  database: gquestion
+  database: gionee_mum
   username: root
-  password: CrpNegmc6XMGcjfs
-
+  password: FGhuytR%t4RfY^5rtY8uh
+  timeout: 5000

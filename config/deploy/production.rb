@@ -59,3 +59,9 @@
 #     auth_methods: %w(publickey password)
 #     # password: 'please use keys'
 #   }
+server '103.20.212.145', user: 'root', roles: %w{web app db}, my_property: :my_value
+
+set :ssh_options, {
+  keys: %w{~/.ssh/id_rsa},
+  forward_agent: true
+}
