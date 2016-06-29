@@ -40,7 +40,11 @@ class RetailersController < ApplicationController
           retailers.first.competition_details.destroy_all
           retailers.first.update_attributes(retailer_params)
         end
-        
+        if params[:is_new] == 1
+            tmpCount = Retailer.where('length(tmpCount) != 0').last
+            tmpData = Constant.tempCode(tmpCount)
+            retailers.first.update(tmpCode: tmpData[:tmpCode],tmpCount: tmpData[:tmpCount],retailer_code: '')  
+        end
         format.html { redirect_to @retailer, notice: 'Retailer was successfully created.' }
           format.json { render :show, status: :created, location: @retailer }
       else
