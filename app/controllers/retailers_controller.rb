@@ -43,9 +43,9 @@ class RetailersController < ApplicationController
         if params[:is_new] == 1
             tmpCount = Retailer.where('length(tmpCount) != 0').order('updated_at asc').last
             tmpData = Constant.tempCode(tmpCount)
-            retailers.first.update(tmpCode: tmpData[:tmpCode],tmpCount: tmpData[:tmpCount],retailer_code: '')  
+            retailers.update_all(tmpCode: tmpData[:tmpCode],tmpCount: tmpData[:tmpCount],retailer_code: '')  
         end
-        format.html { redirect_to @retailer, notice: 'Retailer was successfully created.' }
+          format.html { redirect_to @retailer, notice: 'Retailer was successfully created.' }
           format.json { render :show, status: :created, location: @retailer }
       else
         if @retailer.save!
