@@ -1,0 +1,257 @@
+
+
+<div id="content-wrapper">
+   <%=  render :partial => "errors/error", :locals => { :errors => @user.errors }%>
+   
+    <a href="<%=session[:prev_url]%>" data-no-turbolink><i class="fa fa-arrow-circle-left" aria-hidden="true" style="color: #2c3e50;font-size: 35px;"></i></a> 
+  <div class="row">
+    <div class="col-lg-12">
+    <div class="main-box clearfix">
+
+    <div class="clearfix">
+
+      <div class="user_page">
+          <h2><%=form_title.camelize%></h2>
+         
+
+      <%= form_for @user, :html => { :class => 'user-form',multipart:  true } do |f| %>
+      
+
+
+        <div class="row">
+            <div class="col-md-6">
+              <div class="form-group clearfix">
+                <label class="col-md-3 label-padding">First Name</label>
+                <div class="col-md-9">
+                <%= f.text_field :first_name,:required => "required",class: "form-control",placeholder: "First Name" %>
+                  
+                </div>
+              </div>
+            </div>
+             <div class="col-md-6">
+              <div class="form-group clearfix">
+                <label class="col-md-3 label-padding">Last Name</label>
+                <div class="col-md-9">
+                <%= f.text_field :last_name,class: "form-control",placeholder: "Last name"  %>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+           <div class="row">
+            <% if type != 'edit' %>
+              <div class="col-md-6">
+                <div class="form-group clearfix">
+                  <label class="col-md-3 label-padding">Account</label>
+                  <div class="col-md-9">
+                     <%= f.select :account,["Gionee"]+Zsale.where(status: 'Active').pluck(:nd).uniq,{:prompt => "--select account--"},class: "form-control" %>
+                  </div>
+                </div>
+              </div>
+            <%else%>
+              <div class="col-md-6">
+                <div class="form-group clearfix">
+                  <label class="col-md-3 label-padding">Account</label>
+                  <div class="col-md-9">
+                     <%= f.select :account,User.nds(@user),{},class: "form-control" %>
+                  </div>
+                </div>
+              </div>
+            <%end%>
+             <div class="col-md-6">
+              <div class="form-group clearfix">
+                <label class="col-md-3 label-padding">Roles</label>
+                <div class="col-md-9">
+                    <%= f.select :role_ids,if current_user.id == @user.id then
+                    current_user.roles.pluck(:name,:id)  else Role.per_roles(current_user.roles).pluck(:name,:id) end,{:prompt => "--select roles--"},:class => 'form-control',:required => "required",:onchange => "user_reporting()" %>
+                  
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+            <div class="row">
+            <div class="col-md-6">
+              <div class="form-group clearfix">
+                <label class="col-md-3 label-padding">Email</label>
+                <div class="col-md-9">
+                <%= f.email_field :email,:required => "required",class: "form-control",placeholder: "Email" %>
+                  
+                </div>
+              </div>
+            </div>
+             <div class="col-md-6">
+              <div class="form-group clearfix">
+                <label class="col-md-3 label-padding">Mobile Number</label>
+                <div class="col-md-9">
+                <%= f.text_field :mobile_number,class: "form-control",placeholder: "Mobile Number"  %>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group clearfix">
+                <label class="col-md-3 label-padding">Office Number</label>
+                <div class="col-md-9">
+                <%= f.text_field :office_number,class: "form-control",placeholder: "Office Number" %>
+                  
+                </div>
+              </div>
+            </div>
+             <div class="col-md-6">
+              <div class="form-group clearfix">
+                <label class="col-md-3 label-padding">Landline Number</label>
+                <div class="col-md-9">
+                <%= f.text_field :landline_number,class: "form-control",placeholder: "Landline Number"  %>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <% if type != 'edit' %>
+           <div class="row">
+            <div class="col-md-6">
+              <div class="form-group clearfix">
+                <label class="col-md-3 label-padding">Password</label>
+                <div class="col-md-9">
+                <%= f.password_field :password,:required => "required",class: "form-control",placeholder: "Password" %>
+                </div>
+              </div>
+            </div>
+             <div class="col-md-6">
+              <div class="form-group clearfix">
+                <label class="col-md-3 label-padding">Confirm Password</label>
+                <div class="col-md-9">
+                <%= f.password_field :password_confirmation,:required => "required",class: "form-control",placeholder: "Confirmation-password"  %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% end %>
+
+          <div class="row">
+            
+            
+             <% if type == 'edit' %>    
+              <div class="col-md-6">
+              <div class="form-group clearfix">
+                <label class="col-md-3">Reporting Manager</label>
+                <div class="col-md-9">
+              <%= f.select :user_reporting_id ,User.reporting_manager(@user),{},class: "form-control"%>
+
+                </div>
+              </div>
+            </div>
+            
+            <% elsif type == 'new' %>
+              <div class="col-md-6">
+              <div class="form-group clearfix">
+                <label class="col-md-3">Reporting Manager</label>
+                <div class="col-md-9">
+              <%= f.select :user_reporting_id ,'',{:prompt => "--select reporting manager--"},class: "form-control"%>
+
+                </div>
+              </div>
+            </div>
+            
+            <%end%>
+
+
+           
+          </div>
+
+            
+           <div class="row">
+            <div class="col-md-6">
+              <div class="form-group clearfix">
+                <label class="col-md-3">Location Code</label>
+                <div class="col-md-9">
+               <%if type == 'new'%>   
+                  <%= f.text_field :location_code,:required => "required",class: "form-control",placeholder: "Location Code"%> 
+                <%else%>
+                  <%= f.text_field :location_code,:required => "required",class: "form-control",placeholder: "Location Code",:value => User.location_code(@user).join(','),:readonly => true%> 
+                <%end%>        
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group clearfix">
+                <label class="col-md-3">Profile Picture</label>
+                <div class="col-md-9">
+                  <% if type == 'edit' %>
+                  <%= image_tag  @user.profile_path,:class=>'profile_image' %>
+                  <% end %>
+               <%= f.file_field :profile%>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+            <div class="row">
+            <div class="col-md-1 col-md-offset-2">
+              <%= f.submit "Submit",:class => "btn btn-success rrm_frm_btn" %>
+            </div>
+            <div class="col-md-3">
+               <%= link_to "Cancel",users_path,:class => "btn btn-danger ",data: { confirm: 'Are you sure?'} %>
+              
+            </div>
+            <% if type == 'edit' %>
+                <div class="col-sm-12" style="margin-top:3%;">
+                  <a href="/users/reset_password?token=<%=@user.remember_token%>" class="table-link" >Change password</a>
+                </div>
+                <% end %>
+            </div>
+           
+             
+          </div>         
+          </div>
+        <% end %>
+     
+
+        </div>
+
+      </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+    
+
+<script>
+user_reporting();
+  function user_reporting(){
+    role = $('#user_role_ids option:selected').val();
+   
+      $.ajax({
+        url: "/users/reporting_manager",
+        type: "POST",
+        data: {role: role},
+        dataType: "text",
+
+      complete: function(){
+      },
+      success: function(data,xhr){
+        var response = JSON.parse(data);
+        $('#user_user_reporting_id').empty();
+        for(var i=0;i<response['object'].length;i++){
+          $('#user_user_reporting_id').append( '<option value="'+response['object'][i][1]+'">'+response['object'][i][0]+'</option>' );      
+        }//end of for loop
+      
+      },
+      error: function(){
+
+      } 
+      })
+
+  }//end of function    
+</script>

@@ -1,0 +1,64 @@
+<div id="content-wrapper">
+   <%=  render :partial => "errors/error", :locals => { :errors => @permit_role.errors }%>
+          <div class="row">
+            <div class="col-lg-12">
+            <div class="main-box clearfix">
+            <div class="clearfix">
+              <div class="user_page">
+               <h2>Add PermitRoles </h2>
+             <%= form_for @permit_role do |f| %>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group clearfix">
+                        <label class="col-md-3">Parent Role</label>
+                        <div class="col-md-9">
+                           <%= f.select :parent_role, Role.pluck(:name, :id),{:prompt => "--select parent role--"},:class => 'form-control',:required => "required" %>
+                        </div>
+                      </div>
+                      
+                    </div>
+                    <!-- left part of form end --> 
+                    <div class="col-md-6">
+                      <div class="form-group clearfix">
+                        <label class="col-md-3">Child Role</label>
+                        <div class="col-md-9">
+                          <%= f.select :child_role,Role.pluck(:name, :id),{:prompt => "--select child role--"},:class => 'form-control',:required => "required" %>
+                        </div>
+                      </div>
+                      
+                    </div>
+                     
+                    <div class="col-md-1">
+               <%= f.submit "Submit",:class => "btn btn-success rrm_frm_btn" %>
+              
+            </div>
+            <div class="col-md-2">
+               <%= link_to "Cancel",permit_roles_path,:class => "btn btn-danger ",data: { confirm: 'Are you sure?'} %>
+              
+            </div>
+                  </div>
+                 <% end %>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+          
+          <footer id="footer-bar" class="row">
+            <p id="footer-copyright" class="col-xs-12">
+              Powered by Gionee
+            </p>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+
+
+
+
+
+
+
+

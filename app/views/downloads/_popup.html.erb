@@ -1,0 +1,132 @@
+
+
+			<div class="down_load_report">
+				<div class="modal-header">
+				
+					<h4 class="modal-title">Download Report</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-sm-4">
+							<div class="label_nme">
+								Report Type
+							</div>
+						</div>
+
+						<div class="col-sm-offset-1 col-sm-6">
+							
+					  <%=select_tag :type,options_for_select(CSV_TYPE),:id=>"type",class: 'form-control'%>
+				
+						</div>
+					</div>
+
+
+					<div class="row">
+					<div class="col-sm-4">
+						<div class="label_nme">
+							ND
+						</div>
+						</div>
+						<div class="col-sm-offset-1 col-sm-6">
+							<div class="dropdown">
+					  <button class="btn btn-default dropdown-toggle form-control" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					    Dropdown
+					    <span class="caret"></span>
+					  </button>
+					  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+					    <li><a href="#">Action</a></li>
+					    <li><a href="#">Another action</a></li>
+					    <li><a href="#">Something else here</a></li>
+					    <li role="separator" class="divider"></li>
+					    <li><a href="#">Separated link</a></li>
+					  </ul>
+					</div>
+						</div>
+					</div>
+
+					<div class="row">
+					<div class="col-sm-4">
+						<div class="label_nme">
+							RDS
+						</div>
+					</div>
+					<div class="col-sm-offset-1 col-sm-6">
+					<div class="dropdown">
+					  <button class="btn btn-default dropdown-toggle form-control" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					    Dropdownsdfgxdfgdx
+					    <span class="caret"></span>
+					  </button>
+					  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+					    <li><a href="#">Action</a></li>
+					    <li><a href="#">Another action</a></li>
+					    <li><a href="#">Something else here</a></li>
+					    <li role="separator" class="divider"></li>
+					    <li><a href="#">Separated link</a></li>
+					  </ul>
+					</div>
+				</div>
+			</div>
+
+				<div class="row">
+				<div class="col-sm-4">
+						<div class="label_nme">
+							MUM
+						</div>
+						</div>
+						<div class="col-sm-offset-1 col-sm-6">
+					<div class="dropdown">
+					  <button class="btn btn-default dropdown-toggle form-control" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					    Dropdown
+					    <span class="caret"></span>
+					  </button>
+					  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+					    <li><a href="#">Action</a></li>
+					    <li><a href="#">Another action</a></li>
+					    <li><a href="#">Something else here</a></li>
+					    <li role="separator" class="divider"></li>
+					    <li><a href="#">Separated link</a></li>
+					  </ul>
+					</div>
+					</div>
+					</div>
+
+					<div class="row">
+					<div class="col-sm-4">
+						<div class="label_nme">
+							From
+						</div>
+						</div>
+						<div class="col-sm-offset-1 col-sm-6">
+					<div class="clndr_mbt">
+					  <%=date_field_tag :from,Time.now.to_date,:id=>"from",:placeholder => "from",:class=> 'form-control'%>
+					  
+					</div>
+					</div>
+					</div>
+
+					<div class="row">
+					<div class="col-sm-4">
+						<div class="label_nme">
+							To
+						</div>
+						</div>
+						<div class="col-sm-offset-1 col-sm-6">
+					<div class="clndr_mbt">
+					  <%=date_field_tag :to,Time.now.to_date,:id=>"till",:placeholder => "till",:class=> 'form-control'%>
+					</div>
+					</div>
+					</div>
+
+					 
+					
+				</div>
+				<div class="modal-footer">
+
+					<%=submit_tag :Cancel,:id => "cancel",class: 'btn btn-default',"data-dismiss" => "modal"%>
+					<%=submit_tag :Generate,:id => "csv",class: 'btn btn-primary'%>
+					 
+				</div>
+			</div><!-- /.modal-content -->
+	
+
+

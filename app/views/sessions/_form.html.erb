@@ -1,0 +1,59 @@
+<%= form_for :session, url: sessions_path do |form| %>
+ 
+ <div id="login-full-wrapper" class="reset-password-wrapper">
+ <div class="container">
+<div class="row">
+<div class="col-xs-12">
+<div id="login-box">
+<div id="login-box-holder">
+  <div class="row">
+    <div class="col-xs-12">
+      <header id="login-header">
+        <div id="login-logo">
+          <img src="/assets/logo_gionee.png" alt=""/>
+        </div>
+      </header>
+      <div id="login-box-inner" class="with-heading">
+     
+      <div class="input-group reset-pass-input">
+              <span class="input-group-addon"><i class="fa fa-user"></i></span>
+         
+       
+          <%= form.text_field :email, type: 'email', autofocus: true,class: 'form-control',placeholder: 'Email address',:required => true %>
+      
+      </div>
+
+      <div class="input-group reset-pass-input">
+            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+      
+        
+        <%= form.password_field :password, autocomplete: "off",class: 'form-control',placeholder: 'Password',:required => true %>
+      </div>
+ 
+
+      <div class="row">
+            <div class="col-xs-12">
+               <%= form.submit 'Login',class: 'btn btn-success col-xs-12' %>
+            </div>
+            <div class="col-xs-12">
+              <br/>
+             <%= link_to 'Forgot Password', passwords_new_path,class: 
+             'forgot-link col-xs-12',id: 'login-forget-link' %>
+              
+            </div>
+      </div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<% end %>
+
+

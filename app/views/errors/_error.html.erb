@@ -1,0 +1,10 @@
+<% if errors.any? %>
+  	<div class="hide-errors" >
+    <strong>Please fix following errors</strong><br/>
+    
+      <% errors.full_messages.each do |msg| %>
+        <%= msg %><br/>
+      <% end %>
+    </div>
+  
+<% end %>

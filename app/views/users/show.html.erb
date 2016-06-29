@@ -1,0 +1,79 @@
+
+	<div id="content-wrapper">
+		<a href="/users" data-no-turbolink><i class="fa fa-arrow-circle-left" aria-hidden="true" style="color: #2c3e50;font-size: 35px;"></i></a> 
+	<div class="row" id="user-profile">
+	<div class="col-lg-4 col-md-4 col-sm-4">
+	<div class="main-box clearfix">
+	<header class="main-box-header clearfix">
+	<h2><%=  User.full_name(@user)%></h2>
+
+	</header>
+
+
+	<div class="main-box-body clearfix">
+	 <div class="supr_admn_img_blk">
+	<%=image_tag "#{if @user.profile_path != nil && @user.profile_path.length != 0  then @user.profile_path else '/assets/2000px-User_icon_2.svg.png' end}" ,:class=> "profile-img img-responsive center-block "%>
+	 </div>
+
+	<div class="profile-label">
+	<%Zuser.where(email: @user.email).pluck(:location_code).each do |location_code|%>
+	<span class="label label-danger"><%=location_code%> </span>
+	<%end%>
+	</div>
+
+
+	<div class=" profile-since state_css">
+	 <i class="fa-li fa fa-map-marker"></i><span><%=@user.states.pluck(:name).join(',')%></span> 
+	</div>
+
+	<div class="profile-details">
+	<ul class="fa-ul">
+	<li><i class="fa-li fa fa-mobile"></i>Mobile No: <span><%=@user.mobile_number%></span></li>
+	<li><i class="fa-li fa fa-phone"></i>Landline No: <span><%=@user.landline_number%></span></li>
+	<li><i class="fa-li fa fa-phone-square"></i>Office No: <span><%=@user.office_number%></span></li>
+	<li><i class="fa-li fa fa-envelope"></i>Email: <span><%=@user.email%></span></li>
+	</ul>
+	</div>
+
+	<div class="profile-details">
+	<ul class="fa-ul">
+	<li><i class="fa-li fa fa-user"></i>Account: <span><%=@user.account%></span></li>
+	
+	<li><i class="fa-li fa fa-shield"></i>Reporting Manager: <span><%=begin
+		Zuser.where(location_code: Zuser.where(email: @user.email).pluck(:parent_location_code)).pluck(:person_name).join(',')
+	rescue Exception => e
+		
+	end  %></span></li>
+	
+	</ul>
+	</div>
+<%if current_user.roles.pluck(:name).any?{|role| UPDATE_USER_ROLES.include?(role)}%>
+	<div class="profile-message-btn center-block text-center">
+	<%= link_to edit_user_path(@user),:class=> 'btn btn-success' do %>
+	   	Edit User
+		<i class="fa fa-pencil"></i>
+	<% end %>
+	</div>
+<%end%>	
+	</div>
+
+	</div>
+	</div>
+	<div class="col-lg-8 col-md-8 col-sm-8">
+
+		<% if User.user_roles(@user).join(",")!= 'TSM' %>
+				<%= render 'other_user' %> 
+		    <% else %>
+		    	<%= render 'mum'%>
+		    <% end %>
+
+	
+	</div>
+	</div>
+
+	</div>
+
+<%= render 'common_js/common'%>
+<script>
+	$("#users").attr("class","active")
+</script> 

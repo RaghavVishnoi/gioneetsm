@@ -1,0 +1,186 @@
+<!-- <div id="content-wrapper">
+<div class="row">
+<div class="col-lg-12">
+
+<div class="row">
+<div class="col-lg-12">
+ 
+
+<div class="clearfix">
+  <h1 class="pull-left">Retailers</h1>
+  
+  
+</div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-lg-12">
+<div class="main-box no-header clearfix">
+  <div class="main-box-body clearfix">
+    <div class="table-responsive">
+      <table class="table user-list table-hover retailers_tbl">
+        <thead>
+          <tr>
+            <th><span>Mum Name</span></th>
+            <th><span>Retailer Name</span></th>
+            <th><span>City</span></th>
+            <th><span>State</span></th>
+            <th><span>Generated On</span></th>
+            <th><span>Sales Volumne</span></th>
+            <th><span>Sales Value</span></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+               <%@retailers.each do |retailer|%>  
+          <tr>
+            <td>
+              
+             <%=retailer.mum%>
+              
+            </td>
+            <td>
+              <%=retailer.retailer_name%>
+            </td>
+            <td>
+             <%=retailer.city%>
+            </td>
+            <td>
+             <%=retailer.state%>
+            </td>
+            <td>
+             <%=retailer.created_at.strftime("%d %b,%Y")%> 
+            </td>
+            <td>
+             <%=retailer.store_monthly_sales_volume%>
+            </td>
+             <td>
+            <%=retailer.store_monthly_sales_value%>
+            </td>
+            <td style="text-align:right;">
+              <%= link_to retailer,:class=> 'table-link' do %>
+             
+                <span class="fa-stack">
+                  <i class="fa fa-square fa-stack-2x"></i> 
+                  <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                </span>
+             
+              <% end %>
+            
+            </td>
+
+          </tr>
+         <% end %>
+          <%= will_paginate @retailers %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<footer id="footer-bar" class="row">
+<p id="footer-copyright" class="col-xs-12">
+Powered by Cube Theme.
+</p>
+</footer>
+</div>
+</div>
+</div>
+</div>
+
+  -->
+
+  
+        
+         <div id="content-wrapper">
+        
+          <div class="row">
+            <div class="col-lg-12">
+            <div class="main-box clearfix">
+            <div class="clearfix">
+              <div class="common_page gsb1">
+              <div class="hdr">
+                   <div class="row">
+                <div class="col-md-3">
+                  <h4>WOD Expansion</h4>
+                </div>
+                <div class="col-md-6">
+                </div>
+                <div class="col-md-3 pull-right">
+                  <%=render 'search'%>
+                </div>
+                 
+              </div>    
+            </div>
+           
+              
+              <%@retailers.each do |retailer|%>   
+              <div id='content' class="tab-content">
+                
+                    <div class="tab-pane active" id="all">
+                      <div class="row">
+                      <div class="col-md-5">
+                        <p><b>MUM Name: </b><span class="blue"><%=retailer.mum%></span></p>
+                         <p><b>Retailer Name: </b><span class="blue"><%=retailer.retailer_name%></span></p>
+                          <p><b>Retailer Code: </b><span class="blue"><%=retailer.retailer_code%></span></p> 
+                        <p><b>Address: </b><span class="blue"><%=retailer.address%></span></p>
+                        <p><b>City: </b><span class="blue"><%=retailer.city%></span></p>
+                        <p><b>State: </b><span class="blue"><%=retailer.state%></span></p>
+                        <p><b>Landmark: </b><span class="blue"><%=retailer.landmark%></span></p>
+                        
+                      </div>
+                      <div class="col-md-5">
+                        <p><b>Location Code: </b><span class="blue"><%=retailer.location_code%></span></p>
+                         <p><b>Generated On: </b><span class="blue"><%=retailer.created_at.strftime("%d %b,%Y")%></span></p>
+                         <p><b>Sales Quantity: </b><span class="blue"><%=retailer.store_monthly_sales_volume%></span></p>
+                         <p><b>Sales Value: </b><span class="blue"><%=retailer.store_monthly_sales_value%></span></span></p>
+                         <p><b>IMEI: </b><span class="blue"><%=retailer.imei%></span></span></p>
+                         <p><b>Temp Code: </b><span class="blue"><%=retailer.tmpCode%></span></span></p>
+                        
+                      </div>
+
+                      <div class="col-md-2">
+                        <ul class="list-inline list-unstyled">
+                           
+                        <li class="blue"><i class="fa fa-hand-o-right"></i><span><%=link_to :show,retailer%></span></li>
+                          
+                        </ul>
+                      </div>
+                    </div>
+                   </div>
+                   
+                   
+
+                   
+                
+
+</div>
+               
+      <%end%>
+      <div data-no-turbolink>
+        <%= will_paginate @retailers %>
+      </div>   
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+          
+          <footer id="footer-bar" class="row">
+            <p id="footer-copyright" class="col-xs-12">
+              Powered by Gionee
+            </p>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </div>
+ <script>
+    $("#retailer").attr("class","active")
+  </script>   

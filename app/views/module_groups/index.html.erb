@@ -1,0 +1,82 @@
+
+        
+         <div id="content-wrapper">
+            <div class="row">
+          
+          <div class="col-lg-12">
+          <div class="add_new_notfcn">
+            <h4><i class="fa fa-plus-square fa-lg"></i><span> <%= link_to "New Module", new_module_group_path %></span></h4>
+          </div>
+        </div>
+          
+            <div class="col-lg-12">
+            <div class="main-box clearfix">
+            <div class="clearfix">
+              <div class="common_page gsb1">
+              <div class="hdr">
+
+
+                   <div class="row">
+                <div class="col-md-2">
+                  <h4>Module Group</h4>
+                </div>
+                 
+              </div>    
+            </div>
+           
+              
+              <%@module_groups.each do |group_module|%>   
+              <div id='content' class="tab-content">
+                
+                    <div class="tab-pane active" id="all">
+                      <div class="row">
+                      <div class="col-md-8">
+                        <p><b>Group Name: </b><span class="blue"><%=group_module.name%></span></p>
+                          
+                        
+                      </div>
+                      
+                      
+                      <div class="col-md-1">
+                      <ul class="list-inline list-unstyled">
+                           
+                        <li class="blue"><i class="fa fa-hand-o-right"></i><span><%= link_to 'Edit', edit_module_group_path(group_module) %></li>
+                          
+                        </ul>
+                      </div>
+                      <div class="col-md-1">
+                      <ul class="list-inline list-unstyled">
+                           
+                        <li class="blue"><i class="fa fa-hand-o-right"></i><span><%=link_to :destroy,group_module, method: :delete, data: { confirm: 'Are you sure?' }%></span></li>
+                          
+                        </ul>
+                      </div>
+                    </div>
+                   </div>
+                   
+                   
+
+                   
+                
+
+</div>
+               
+              <%end%>
+           
+                 
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+          
+          <footer id="footer-bar" class="row">
+            <p id="footer-copyright" class="col-xs-12">
+              Powered by Gionee
+            </p>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </div>
+  

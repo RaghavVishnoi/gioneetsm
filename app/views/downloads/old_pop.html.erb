@@ -1,0 +1,13 @@
+
+
+	<div class="csvDiv" id="main-csv">
+	<h2>Select type of report </h2>
+	<%=select_tag :type,options_for_select(CSV_TYPE),:id=>"type"%>
+	<%=text_field_tag :mum,'',:id => "mum",:placeholder => 'MUM name'%>
+	
+	<%=date_field_tag :from,Time.now.to_date,:id=>"from",:placeholder => "from"%>
+	<%=date_field_tag :to,Time.now.to_date,:id=>"till",:placeholder => "till"%>
+
+	<%=submit_tag :Generate,:id => "csv"%>
+	<%=submit_tag :Cancel,:id => "cancel"%>
+</div>

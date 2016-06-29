@@ -1,0 +1,45 @@
+
+<head>
+	<style>
+	table, th, td {
+	    border: 1px solid black;
+	    border-collapse: collapse;
+	}
+	th, td {
+	    padding: 5px;
+	}
+	th {
+	    text-align: left;
+	    background:#bbb;
+	}
+	table tr:nth-child(even) {background:#e2e2e2;}
+	table tr:nth-child(odd) {background:#efefef;}
+	</style>
+</head>
+<body>
+	<h1>User Details</h1>
+	<table style="width:100%" >
+	  <tr>
+	    <th>Firstname</th>
+	    <th>Lastname</th>
+	    <th>Email</th>
+	    <th>Password</th>
+	    <th>Mobile Number</th>
+	    <th>Landline Number</th>
+	    <th>Office Number</th>
+	    <th>Account</th>
+	  </tr>
+	  <tr>
+	    <td><%=@user.first_name%></td>
+	    <td><%=@user.last_name%></td>
+	    <td><%=@user.email%></td>
+	    <td><%=@user.password%></td>
+	    <td><%=@user.mobile_number%></td>
+	    <td><%=@user.landline_number%></td>
+	    <td><%=@user.office_number%></td>
+	    <td><%=@user.account%></td>
+	  </tr>
+	 
+	</table>
+
+</body>

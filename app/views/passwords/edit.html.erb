@@ -1,0 +1,51 @@
+ <div id="clearance" class="password-reset">
+
+   <%= form_for :password_reset,
+        url: user_password_path(@user, token: @user.confirmation_token),
+        html: { method: :put } do |form| %>
+    
+  <div id="login-full-wrapper" class="reset-password-wrapper">
+<div class="container">
+<div class="row">
+<div class="col-xs-12">
+<div id="login-box">
+<div id="login-box-holder">
+  <div class="row">
+    <div class="col-xs-12">
+      <header id="login-header">
+        <div id="login-logo">
+          <img src="/assets/logo_gionee.png" alt=""/>
+        </div>
+      </header>
+      <div id="login-box-inner" class="with-heading">
+     
+      <div class="input-group reset-pass-input">
+              <span class="input-group-addon"><i class="fa fa-user"></i></span>
+
+
+      <%= form.password_field :password, autofocus: true,autocomplete: false,class: 'form-control',placeholder: 'Enter password',:required => true %>
+      </div>
+
+      <div class="row">
+            <div class="col-xs-12">
+               <%= form.submit 'Forgot Password',class: 'btn btn-success col-xs-12' %>
+            </div>
+            
+      </div>
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+  <% end %>
+</div>
+
+
+ 

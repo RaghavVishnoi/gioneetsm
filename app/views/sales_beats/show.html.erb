@@ -1,0 +1,207 @@
+
+<div id="content-wrapper">
+<div class="row">
+<div class="col-lg-12">
+<div class="common_page gsb_page">
+<div class="clearfix"></div>
+<a href="/sales_beats"><i class="fa fa-arrow-circle-left" aria-hidden="true" style="color: #2c3e50;font-size: 35px;"></i></a>
+
+<div class="row">
+	<div class="col-md-6">
+		<div class="gsb_blk">
+			<h2>Sales Beat Details</h2>
+			<div class="row">
+				<div class="col-md-4">
+					Name of MUM
+				</div>
+				<div class="col-md-4">
+					<div class="blue"> </div>
+				</div>
+				<div class="col-md-4 blue"><%=@sales_beat.mum%></div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4">Name of RDS</div>
+				<div class="col-md-4">
+					 
+				</div>
+				<div class="col-md-4 blue">
+					<div><%=@sales_beat.rds%></div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4">Date</div>
+				<div class="col-md-4">
+					 
+				</div>
+				<div class="col-md-4 blue">
+					<div><%=@sales_beat.date%></div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4">Location of store</div>
+				<div class="col-md-4">
+					 
+				</div>
+				<div class="col-md-4 blue">
+					<div>
+						<%if @sales_beat.location != nil%>
+						<%=@sales_beat.location.lat %>,<%=@sales_beat.location.lng %>
+						<%end%></div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4">Retailer Code</div>
+				<div class="col-md-4">
+					 
+				</div>
+				<div class="col-md-4 blue">
+					 <%=@sales_beat.retailer_code%>
+					    
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">IMEI</div>
+				<div class="col-md-4">
+					 
+				</div>
+				<div class="col-md-4 blue">
+					 <%=@sales_beat.imei%>
+					    
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">Payment Issue</div>
+				<div class="col-md-4">
+					 
+				</div>
+				<div class="col-md-4 blue">
+					 <%=Constant.to_lang(@sales_beat.payment_issue)%>
+					    
+				</div>
+			</div>
+			 
+
+			 
+			
+			 
+
+		</div>
+	</div>
+
+	<div class="col-md-6">
+		<div class="shop_detals">
+			<h2>Stocks</h2>
+			<%@sales_beat.stocks.each_slice(2) do |stock|%>
+			<div class="row">
+				<div class="col-md-6">
+					 <div class="row">
+					 	<div class="col-md-6">
+					 		<%=stock[0].mod_name%>
+					 	</div>
+					 	<div class="col-md-6 blue">
+					 		<%=Constant.required_pieces(stock[0].count)%>
+					 	</div>
+					 </div>
+				</div>
+				<%if stock[1] != nil%>
+					<div class="col-md-6">
+						 <div class="row">
+						 	<div class="col-md-4">
+						 		<%=stock[1].mod_name%>
+						 	</div>
+						 	<div class="col-md-4 blue">
+						 		<%=Constant.required_pieces(stock[1].count)%>
+						 	</div>
+						 </div>
+					</div>
+				<%end%>
+			</div>
+			<%end%>			 
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+</div>
+
+  
+<section class="comments_sectn">
+<div class="row">	
+<div class="col-lg-12">
+<div class="main-box clearfix">
+<div class="clearfix">
+<div class="common_page gsb_page">
+<h2>Other Details</h2>
+<div class="comments_blk">
+<div class="comments">
+<div class="row">
+	<div class="col-lg-12">
+		<div class="row">
+			 
+
+				 
+					<div class="col-md-6">
+						<b>Is sis maintained?: </b>
+					</div>
+					<div class="col-md-6 blue">
+						<%=Constant.to_sub(@sales_beat.is_sis_maintained)%>
+					</div>
+			 			 	
+		</div>
+		<div class="row">
+				 
+					<div class="col-md-6">
+						<b>Is gsb maintained?: </b>
+					</div>
+					<div class="col-md-6 blue">
+						<%=Constant.to_sub(@sales_beat.is_gsb_maintained)%>
+					</div>
+			 			 	
+		</div>	
+		<div class="row">
+				 
+					<div class="col-md-6">
+						<b>Is gcs present?: </b>
+					</div>
+					<div class="col-md-6 blue">
+						<%=Constant.to_sub(@sales_beat.gcs_present)%>
+					</div>
+			 			 	
+		</div>	
+		
+	</div>
+ </div>	
+ 	
+</div>
+ 
+ 
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+ 
+ 
+<footer id="footer-bar" class="row">
+<p id="footer-copyright" class="col-xs-12">
+Powered by Gionee
+</p>
+</footer>
+</div>
+</div>
+</div>
+</div>
+ <script>
+    $("#sales_beat").attr("class","active")
+  </script>  
+
+
+ 

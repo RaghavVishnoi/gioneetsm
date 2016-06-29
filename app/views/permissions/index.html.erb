@@ -1,0 +1,90 @@
+<div id="content-wrapper">
+               
+  <div class="row">
+     <div class="col-lg-12">
+        <div class="main-box-body clearfix">
+            <div class="row">
+            
+            <div class="col-md-3">
+                <div class="add_new_notfcn">
+                  <h4><i class="fa fa-plus-square fa-lg"></i>
+                    <span>
+          <%= link_to "Add Permission",new_permission_path %>
+             </span>
+                  </h4>
+                </div>
+              </div>
+             
+            </div>
+            </div>
+          </div>
+        </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+        <div class="main-box clearfix">
+          <div class="clearfix">
+              <div class="common_page user">
+              <div class="user_tab">
+              <div class="row">
+                <div class="col-md-2">
+                  <h4>Permissions</h4>
+                </div>
+              
+               
+              </div>
+              </div>
+
+                <div id='content' class="tab-content" >
+               <% @permissions.each do |permission| %>
+              
+                    <div class="tab-pane active" id="all">
+                      <div class="row">
+                          <div class="col-md-9">
+
+                            <p> <span class="blue">  <%= permission.role.name %> </span>
+                             
+                              <span class="role_of_user"> 
+                                 
+                                <%= permission.module_group.name %>
+                                                        
+                       </span> 
+
+                       </p>
+                             
+                          </div>
+
+                          <div class="col-md-3">
+                              <ul class="list-inline list-unstyled">
+                              
+                                <li class="blue">
+                                  <i class="fa fa-pencil"></i>
+                                  
+                                  
+                                  <span>
+                                    <%= link_to "Edit", [:edit, permission] %>
+                                  </span>
+                                  
+
+                                </li>
+                              
+                                 
+
+                              </ul>
+                          </div>
+                        </div>
+                    </div>
+
+              <% end %>
+              <%= will_paginate @permissions %>
+                </div>
+
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+   
+        </div>
+
+   

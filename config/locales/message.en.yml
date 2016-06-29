@@ -1,0 +1,4 @@
+en: 
+  password: 
+    invalid_email: "Email id does not exist!"
+    send_email: 'A new password has been send to your email'

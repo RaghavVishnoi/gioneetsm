@@ -1,0 +1,80 @@
+
+        
+         <div id="content-wrapper">
+        
+          <div class="row">
+            <div class="col-lg-12">
+            <div class="main-box clearfix">
+            <div class="clearfix">
+              <div class="common_page gsb1">
+              <div class="hdr">
+                   <div class="row">
+                <div class="col-md-2">
+                  <h4>Retailers</h4>
+                </div>
+                 
+              </div>    
+            </div>
+           
+              
+              <%@retailers.each do |retailer|%>   
+              <div id='content' class="tab-content">
+                
+                    <div class="tab-pane active" id="all">
+                      <div class="row">
+                      <div class="col-md-5">
+                        <p><b>MUM Name: </b><span class="blue"><%=retailer.mum%></span></p>
+                         <p><b>Retailer Name: </b><span class="blue"><%=retailer.retailer_name%></span></p>
+                          <p><b>Retailer Code: </b><span class="blue"><%=retailer.retailer_code%></span></p> 
+                        <p><b>Address: </b><span class="blue"><%=retailer.address%></span></p>
+                        <p><b>City: </b><span class="blue"><%=retailer.city%></span></p>
+                        <p><b>State: </b><span class="blue"><%=retailer.state%></span></p>
+                        <p><b>Landmark: </b><span class="blue"><%=retailer.landmark%></span></p>
+                        
+                      </div>
+                      <div class="col-md-5">
+                         <p><b>Generated On: </b><span class="blue"><%=retailer.created_at.strftime("%d %b,%Y")%></span></p>
+                         <p><b>Sales Volume: </b><span class="blue"><%=retailer.store_monthly_sales_volume%></span></p>
+                         <p><b>Sales Value: </b><span class="blue"><%=retailer.store_monthly_sales_value%></span></span></p>
+                         <p><b>IMEI: </b><span class="blue"><%=retailer.imei%></span></span></p>
+                        
+                      </div>
+
+                      <div class="col-md-2">
+                        <ul class="list-inline list-unstyled">
+                           
+                        <li class="blue"><i class="fa fa-hand-o-right"></i><span><%=link_to :show,retailer%></span></li>
+                          
+                        </ul>
+                      </div>
+                    </div>
+                   </div>
+                   
+                   
+
+                   
+                
+
+</div>
+               
+              <%end%>
+              <%= will_paginate @retailers %>
+                 
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+          
+          <footer id="footer-bar" class="row">
+            <p id="footer-copyright" class="col-xs-12">
+              Powered by Gionee
+            </p>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </div>
+ <script>
+    $("#retailer").attr("class","active")
+  </script>   

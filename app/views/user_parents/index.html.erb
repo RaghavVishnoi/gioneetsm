@@ -1,0 +1,90 @@
+<div id="content-wrapper">
+               
+  <div class="row">
+     <div class="col-lg-12">
+        <div class="main-box-body clearfix">
+            <div class="row">
+            
+            <div class="col-md-3">
+                <div class="add_new_notfcn">
+                  <h4><i class="fa fa-plus-square fa-lg"></i>
+                    <span>
+          <%= link_to "Add Reporting Manager", new_user_parent_path %>
+             </span>
+                  </h4>
+                </div>
+              </div>
+             
+            </div>
+            </div>
+          </div>
+        </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+        <div class="main-box clearfix">
+          <div class="clearfix">
+              <div class="common_page user">
+              <div class="user_tab">
+              <div class="row">
+                <div class="col-md-2">
+                  <h4>Reporting Manager</h4>
+                </div>
+              
+               
+              </div>
+              </div>
+
+                <div id='content' class="tab-content" >
+               <% @user_parents.each do |user_parent| %>
+              
+                    <div class="tab-pane active" id="all">
+                      <div class="row">
+                          <div class="col-md-9">
+
+                            <p> <span class="blue">  <%= user_parent.parent.name %> </span>
+                             
+                              <span class="role_of_user"> 
+                                 
+                              <%= user_parent.child.name %>
+                                                        
+                       </span> 
+
+                       </p>
+                             
+                          </div>
+
+                          <div class="col-md-3">
+                              <ul class="list-inline list-unstyled">
+                              
+                                <li class="blue">
+                                  <i class="fa fa-pencil"></i>
+                                  
+                                  
+                                  <span>
+                                    <%= link_to "Edit", [:edit, user_parent] %>
+                                  </span>
+                                  
+
+                                </li>
+                              
+                                 
+
+                              </ul>
+                          </div>
+                        </div>
+                    </div>
+
+              <% end %>
+              
+                </div>
+
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+   
+        </div>
+
+   

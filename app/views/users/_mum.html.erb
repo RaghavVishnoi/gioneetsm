@@ -1,0 +1,34 @@
+ 
+	<div class="main-box feed">
+		<header class="main-box-header clearfix">
+			<h2 class="pull-left">Activity</h2>
+		</header>
+		
+		<div class="main-box-body clearfix scroll">
+			<ul>
+				
+			
+			<% User.mum_request(@user,'TSM','request').each do |user| %>
+				<li class="clearfix">
+					<div class="img">
+
+		<%=image_tag "#{if @user.profile_path != nil && @user.profile_path.length != 0  then @user.profile_path else '/assets/2000px-User_icon_2.svg.png' end}" ,:class=> "profile-img img-responsive center-block "%>
+					</div>
+					<div class="title">
+						<a href=""><%=User.full_name(@user)%></a> <%= user.message%> 
+					</div>
+					<div class="post-time">
+						<%=user.created_at.strftime("%d %b %Y")%>
+					</div>
+					<div class="time-ago">
+						<i class="fa fa-clock-o"></i> 
+						<%=Constant.time(user.created_at,Time.now)%>
+					</div>
+				</li>
+			<% end %><!--end of each loop -->
+		
+
+			</ul>
+		</div>
+	</div>
+ 

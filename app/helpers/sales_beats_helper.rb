@@ -1,0 +1,2 @@
+module SalesBeatsHelper
+end

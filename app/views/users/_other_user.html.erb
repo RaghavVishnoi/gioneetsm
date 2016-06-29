@@ -1,0 +1,93 @@
+		<div class="main-box clearfix">
+		<div class="tabs-wrapper profile-tabs">
+		<ul class="nav nav-tabs">
+			<%@roles = [];PermitRole.where(parent_role: @user.roles.first.id).each_with_index do |permit_role,i|
+			@roles.push(permit_role.child)
+			%>
+		
+		<li class="<%="active" if i==0%>">
+		<a href="#<%=permit_role.child.name.gsub(' ', '')%>" data-toggle="tab"><%=permit_role.child.name%></a>
+		</li>
+		 
+		<%end%>
+		</ul>
+
+		<div class="tab-content scroll">
+	<%@roles.each_with_index do |role,index|%>	
+			
+		<div class="tab-pane fade in <%="active" if index == 0%>" id="<%=role.name.gsub(' ','')%>">
+	   <%User.children(role,@user).each do |user|%>		
+		<div id="newsfeed">
+
+
+	<div class="row">
+	<div class="col-lg-12">
+	<div class="main-box no-header clearfix">
+	<div class="main-box-body clearfix">
+	<div class="table-responsive">
+	<table class="table user-list table-hover">
+
+	<tbody>
+	<tr>
+		<td>
+			<img src="<%=if user.profile_path != nil  then user.profile_path else '/assets/2000px-User_icon_2.svg.png' end%>" alt=""/>
+			<a href="/users/<%=user.id%>" class="user-link"><%=User.full_name(user)%></a>
+		 
+		</td>
+		 
+		<td class="text-center">
+			<span class="label label-default"><%=Constant.status(user.status)%></span>
+		</td>
+		<td>
+			<a href="#"><%=user.email%></a>
+		</td>
+		<%if current_user.roles.pluck(:name).any?{|role| UPDATE_USER_ROLES.include?(role)}%>
+		<td style="width: 20%;">
+
+			<a href="/users/reset_password?token=<%=user.remember_token%>" class="table-link">
+								<span class="fa-stack" title="reset password">
+									<i class="fa fa-square fa-stack-2x"></i>
+									<i class="fa fa-lock fa-stack-1x fa-inverse"></i>
+								</span>
+							</a>
+			
+			<a href="/users/<%=user.id%>/edit" class="table-link">
+				<span class="fa-stack" title="edit">
+					<i class="fa fa-square fa-stack-2x"></i>
+					<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+				</span>
+			</a>
+			<a href="" class="table-link" onclick=changeStatus(<%=user.id%>)>
+				<span class="fa-stack" title="change status">
+					<i class="fa fa-square fa-stack-2x"></i>
+					<i class="fa fa-eye fa-stack-1x fa-inverse"></i>
+				</span>
+			</a>
+			
+		</td>
+		<%end%>
+	</tr>
+
+	</tbody>
+	</table>
+	</div>
+	</div>
+	</div>
+	</div>
+
+	</div>
+	 
+		</div>
+		<%end%>
+	</div>
+	<%end%>
+		 
+
+	 
+		 
+		</div>
+		
+		</div>
+
+		</div>
+		 

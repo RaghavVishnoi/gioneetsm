@@ -1,0 +1,168 @@
+<!-- <div id="content-wrapper">
+<div class="row">
+<div class="col-lg-12">
+
+<div class="row">
+<div class="col-lg-12">
+ 
+
+<div class="clearfix">
+  <h1 class="pull-left">Targets</h1>
+  
+  
+</div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-lg-12">
+<div class="main-box no-header clearfix">
+  <div class="main-box-body clearfix">
+    <div class="table-responsive">
+      <table class="table user-list table-hover retailers_tbl">
+        <thead>
+          <tr>
+            <th><span>MUM</span></th>
+            <th><span>RDS</span></th>
+            <th><span>FOS</span></th>
+            <th><span>IMEI</span></th>
+            <th><span>Date</span></th>
+            <th><span>Value Target</span></th>
+            <th><span>Volume Target</span></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+               <%@targets.each do |target|%>    
+          <tr>
+            <td>
+              
+            <%=target.mum%> 
+              
+            </td>
+            <td>
+            <%=target.rds%>
+            </td>
+            <td>
+            <%=target.fos%>
+            </td>
+            <td>
+             <%=target.imei%>
+            </td>
+            <td>
+             <%=target.date%>
+            </td>
+            <td>
+            <%=target.value_target%>
+            </td>
+             <td>
+          <%=target.volume_target%>
+            </td>
+            <td style="text-align:right;">
+              <%= link_to target,:class=> 'table-link' do %>
+               
+                <span class="fa-stack">
+                  <i class="fa fa-square fa-stack-2x"></i> 
+                  <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                </span>
+               <% end %>
+            
+            </td>
+
+          </tr>
+         <% end %>
+          <%= will_paginate @targets %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<footer id="footer-bar" class="row">
+<p id="footer-copyright" class="col-xs-12">
+Powered by Cube Theme.
+</p>
+</footer>
+</div>
+</div>
+</div>
+</div>
+
+  -->
+
+  <div id="content-wrapper">
+        
+          <div class="row">
+            <div class="col-lg-12">
+            <div class="main-box clearfix">
+            <div class="clearfix">
+              <div class="common_page gsb1">
+              <div class="hdr">
+                   <div class="row">
+                <div class="col-md-4">
+                  <h4>Gionee Good Morning </h4>
+                </div>
+                 <div class="col-md-5">
+                </div>
+                <div class="col-md-3 pull-right">
+                  <%=render 'search'%>
+                </div> 
+              </div>    
+                     </div>
+             
+              <%@targets.each do |target|%>   
+              
+                 <div id='content' class="tab-content">
+                    <div class="tab-pane active" id="all">
+                      <div class="row">
+                      <div class="col-md-5">
+                        <p><b>MUM:</b> <span class="blue"> <%=target.mum%> </span> </p>
+                       <p><b>RDS:</b> <span class="blue"> <%=target.rds%> </span>  </p>
+                       <p><b>FOS:</b> <span class="blue"> <%=target.fos%> </span>  </p>
+                       <p><b>Location Code: </b><span class="blue"><%=target.location_code%></span></p>
+                      </div>
+
+                      <div class="col-md-5">
+                        <p><b>Date:</b> <span class="blue"> <%=target.date%> </span> </p>
+                       <p><b>Value Target:</b> <span class="blue"> <%=target.value_target%> </span>  </p>
+                       <p><b>Quantity Target:</b> <span class="blue"> <%=target.volume_target%> </span>  </p>
+                       <p><b>IMEI: </b><span class="blue"><%=target.imei%></span></p>
+                      </div>
+
+                      <div class="col-md-2">
+                        <ul class="list-inline list-unstyled">
+                        <li class="blue"><i class="fa fa-hand-o-right"></i><span><%=link_to :show,target%></span></li>
+                          
+                        </ul>
+                      </div>
+                    </div>
+                   </div>
+               </div>
+               
+              <%end%>
+              <div data-no-turbolink>
+                <%= will_paginate @retailers %>
+              </div>  
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+          
+          <footer id="footer-bar" class="row">
+            <p id="footer-copyright" class="col-xs-12">
+              Powered by Gionee
+            </p>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    $("#target").attr("class","active")
+  </script>  

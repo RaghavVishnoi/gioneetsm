@@ -1,0 +1,84 @@
+
+        <div id="content-wrapper">
+        
+          <div class="row">
+            <div class="col-lg-12">
+            <div class="main-box clearfix">
+            <div class="clearfix">
+              <div class="common_page gsb1">
+              <div class="hdr">
+                   <div class="row">
+                <div class="col-md-2">
+                  <h4>Sales Beat</h4>
+                </div>
+                 
+              </div>    
+                     </div></div>
+              <%@sales_beats.each do |sales_beat|%>    
+              
+              <div id='content' class="tab-content">
+                
+                    <div class="tab-pane active" id="all">
+                      
+                      <div class="row">
+                      
+
+                      <div class="col-md-5">
+                         
+                         
+                            <p>
+                               <b>Retailer Code: </b><span class="blue"><%=sales_beat.retailer_code%></span></p>
+                           
+                            <p>
+                               <b>MUM/FOS: </b><span class="blue"><%=sales_beat.mum%></span></p>
+                                 
+                          
+
+                            <p> <b>RDS: </b><span class="blue"><%=sales_beat.rds%></span></p>
+                          
+                          <p><strong>Store Location - </strong><span class="blue"><%=sales_beat.location.lat if sales_beat.location != nil%>,<%=sales_beat.location.lng if sales_beat.location != nil%></span></p>
+                            
+                         
+                      </div>
+                      <div class="col-md-5">
+                                                 
+                        <p><b>Date: </b><span class="blue"><%=sales_beat.date%></span></p>
+                        <p><b>IMEI: </b><span class="blue"><%=sales_beat.imei%></span></p>
+                         <p><b>Payment Issue: </b><span class="blue"><%=Constant.to_lang(sales_beat.payment_issue)%></span></p>
+                           
+                          
+                      </div>
+                      
+                      <div class="col-md-2">
+                        <ul class="list-inline list-unstyled">
+                        <li class="blue"><i class="fa fa-hand-o-right"></i><span><%=link_to :show,sales_beat%></span></li>
+                          
+                        </ul>
+                      </div>
+                    </div>
+ 
+                </div>
+              </div> 
+                  
+              <%end%>
+                
+               <%= will_paginate @retailers %>
+              </div>
+              </div>
+            </div>
+          </div>
+          
+          <footer id="footer-bar" class="row">
+            <p id="footer-copyright" class="col-xs-12">
+              Powered by Gionee
+            </p>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </div>
+ <script>
+    $("#sales_beat").attr("class","active")
+  </script>  
+   
+ 

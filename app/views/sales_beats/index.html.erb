@@ -1,0 +1,186 @@
+<!-- <div id="content-wrapper">
+<div class="row">
+<div class="col-lg-12">
+
+<div class="row">
+<div class="col-lg-12">
+ 
+
+<div class="clearfix">
+  <h1 class="pull-left">Sales Beat</h1>
+  
+  
+</div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-lg-12">
+<div class="main-box no-header clearfix">
+  <div class="main-box-body clearfix">
+    <div class="table-responsive">
+      <table class="table user-list table-hover retailers_tbl">
+        <thead>
+          <tr>
+            <th><span>Retailer Code</span></th>
+            <th><span> MUM/FOS</span></th>
+            <th><span>RDS </span></th>
+            <th><span> Store Location </span></th>
+            <th><span>Date   </span></th>
+            <th><span> IMEI  </span></th>
+            <th><span> Payment Issue  </span></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+              <%@sales_beats.each do |sales_beat|%> 
+          <tr>
+            <td>
+              
+         <%=sales_beat.retailer_code%>
+              
+            </td>
+            <td>
+           <%=sales_beat.mum%>
+            </td>
+            <td>
+             <%=sales_beat.rds%>
+            </td>
+            <td>
+           <%=sales_beat.location.lat if sales_beat.location != nil%>,<%=sales_beat.location.lng if sales_beat.location != nil%>
+            </td>
+            <td>
+             <%=sales_beat.date%>
+            </td>
+            <td>
+        <%=sales_beat.imei%>
+            </td>
+             <td>
+            <%=Constant.to_lang(sales_beat.payment_issue)%>
+            </td>
+            <td style="text-align:right;">
+              <%= link_to sales_beat,:class=> 'table-link' do %>
+              
+                <span class="fa-stack">
+                  <i class="fa fa-square fa-stack-2x"></i> 
+                  <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                </span>
+             <% end %>
+            
+            </td>
+
+          </tr>
+         <% end %>
+          <%= will_paginate @sales_beats %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<footer id="footer-bar" class="row">
+<p id="footer-copyright" class="col-xs-12">
+Powered by Cube Theme.
+</p>
+</footer>
+</div>
+</div>
+</div>
+</div>
+
+  -->
+
+  
+        <div id="content-wrapper">
+        
+          <div class="row">
+            <div class="col-lg-12">
+            <div class="main-box clearfix">
+            <div class="clearfix">
+              <div class="common_page gsb1">
+              <div class="hdr">
+                   <div class="row">
+                <div class="col-md-3">
+                  <h4>Sales Beat</h4>
+                </div>
+                 <div class="col-md-7">
+                </div>
+                <div class="col-md-3 pull-right">
+                  <%=render 'search'%>
+                </div> 
+              </div>    
+                     </div></div>
+              <%@sales_beats.each do |sales_beat|%>    
+              
+              <div id='content' class="tab-content">
+                
+                    <div class="tab-pane active" id="all">
+                      
+                      <div class="row">
+                      
+
+                      <div class="col-md-5">
+                         
+                         
+                            <p>
+                               <b>Retailer Code: </b><span class="blue"><%=sales_beat.retailer_code%></span></p>
+                           
+                            <p>
+                               <b>MUM: </b><span class="blue"><%=sales_beat.mum%></span></p>
+                                 
+                          
+
+                            <p> <b>RDS: </b><span class="blue"><%=sales_beat.rds%></span></p>
+                          
+                          <p><strong>Location Code - </strong><span class="blue"><%=sales_beat.location_code%></span></p>
+                            
+                         
+                      </div>
+                      <div class="col-md-5">
+                         <p><strong>Store Location - </strong><span class="blue"><%=sales_beat.location.lat if sales_beat.location != nil%>,<%=sales_beat.location.lng if sales_beat.location != nil%></span></p>                         
+                        <p><b>Date: </b><span class="blue"><%=sales_beat.date%></span></p>
+                        <p><b>IMEI: </b><span class="blue"><%=sales_beat.imei%></span></p>
+                         <p><b>Payment Issue: </b><span class="blue"><%=Constant.to_lang(sales_beat.payment_issue)%></span></p>
+                           
+                          
+                      </div>
+                      
+                      <div class="col-md-2">
+                        <ul class="list-inline list-unstyled">
+                        <li class="blue"><i class="fa fa-hand-o-right"></i><span><%=link_to :show,sales_beat%></span></li>
+                          
+                        </ul>
+                      </div>
+                    </div>
+ 
+                </div>
+              </div> 
+                  
+              <%end%>
+              <div data-no-turbolink>  
+                <%= will_paginate @retailers %>
+              </div>  
+              </div>
+              </div>
+            </div>
+          </div>
+          
+          <footer id="footer-bar" class="row">
+            <p id="footer-copyright" class="col-xs-12">
+              Powered by Gionee
+            </p>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </div>
+ <script>
+    $("#sales_beat").attr("class","active")
+  </script>  
+   
+ 

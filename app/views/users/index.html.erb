@@ -1,0 +1,125 @@
+<div id="content-wrapper">
+	  <%= render 'shared/notice_messages'%>
+	<div class="col-lg-12">
+		<%if current_user.roles.pluck(:name).any?{|role| UPDATE_USER_ROLES.include?(role)}%>
+	       <div class="col-lg-3">   
+		        <div class="pull-left top-page-ui border_added">
+					<a href="/users/new" class="btn btn-primary pull-left">
+						<i class="fa fa-plus-circle fa-lg"></i> Add user
+					</a>
+				</div>
+			</div>
+		<%end%>
+		<div class="col-lg-2">
+
+		</div>
+
+		<div class="col-lg-7">
+		 <div class="pull-right">
+<div class="pull-left">
+			<%=select_tag :role,options_for_select(User.permit_roles(current_user.roles).pluck(:name,:id),params[:role]),:prompt => '-----select role----',class: 'form-control',:id=>"roles",:onchange => "role()"%>
+</div>
+<div class="pull-left">
+			<%=render 'search'%>
+		</div>
+		</div>
+        </div>
+       
+       </div> 
+<div class="row" style="opacity: 1;">
+<div class="col-lg-12">
+<div class="main-box no-header clearfix">
+	<div class="main-box-body clearfix">
+		<div class="table-responsive">
+			<table class="table user-list table-hover">
+				<thead>
+					<tr>
+						<th><span>User</span></th>
+						<th><span>Email</span></th>
+						<th>Designation</th>
+						<th class="text-center"><span>Status</span></th>
+						<th><span>Created On</span></th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @users.each do |user| %>
+					<tr>
+						<td>
+							<%=  image_tag  "#{if user.profile_path != nil && user.profile_path.length != 0 then user.profile_path else '/assets/2000px-User_icon_2.svg.png' end}",:id=>'resize-image',:class=>'user-link'   %>
+								<%= link_to  user_path(user.id),:class=>'user-link' do %>
+
+								<%= User.full_name(user)%>
+								<%end%>
+							 
+						</td>
+						<td>
+							<%=user.email%>
+							<p class="user-subhead"><b><%=user.mobile_number%></b></p>
+						</td>
+						<td><%=user.roles.pluck(:name).join(',')%></td>
+						<td class="text-center">
+							<span class="label label-default"><%=Constant.status(user.status)%></span>
+						</td>
+						<td>
+							<%=user.created_at.strftime("%d %b,%Y")%>
+						</td>
+						<%if current_user.roles.pluck(:name).any?{|role| UPDATE_USER_ROLES.include?(role)}%>
+					 
+						<td style="width: 20%;">
+							<a href="/users/reset_password?token=<%=user.remember_token%>" class="table-link">
+								<span class="fa-stack" title="reset password">
+									<i class="fa fa-square fa-stack-2x"></i>
+									<i class="fa fa-lock fa-stack-1x fa-inverse"></i>
+								</span>
+							</a>
+
+							 
+							<%= link_to edit_user_path(user) do %>
+								<span class="fa-stack" title="edit">
+									<i class="fa fa-square fa-stack-2x"></i>
+									<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+								</span>
+							<%end%>
+							<a href="" class="table-link" onclick=changeStatus(<%=user.id%>)>
+								<span class="fa-stack" title="update status">
+									<i class="fa fa-square fa-stack-2x"></i>
+									<i class="<%=if user.status == 1 then "fa fa-eye"else "fa fa-eye-slash" end %> fa-stack-1x fa-inverse"></i>
+								</span>
+							</a>
+						</td>
+						<%end%>
+					</tr>	
+					<%end%>			 
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<div data-no-turbolink>
+ <%= will_paginate @users %>
+</div>
+</div>
+</div>
+
+	<footer id="footer-bar" class="row" style="opacity: 1;">
+	<p id="footer-copyright" class="col-xs-12">
+	Powered by Gionee.
+	</p>
+	</footer>
+</div>
+
+<%= render 'common_js/common'%>
+<script>
+	function role(){
+		roles = $('#roles option:selected').val();
+		if(roles.length != 0){
+			location.href='?role='+roles
+		}else{
+			location.href = "/users"	
+		}
+		
+	}
+$("#users").attr("class","active")
+</script>
+ 

@@ -1,0 +1,266 @@
+
+<div id="content-wrapper">
+<div class="row">
+<div class="col-lg-12">
+<div class="common_page gsb_page">
+<div class="clearfix"></div>
+<a href="/retailers"><i class="fa fa-arrow-circle-left" aria-hidden="true" style="color: #2c3e50;font-size: 35px;"></i></a>
+
+<div class="row">
+	<div class="col-md-6">
+		<div class="gsb_blk">
+			<h2>Retailer Details</h2>
+			<div class="row">
+				<div class="col-md-4 blue">
+					<%=@retailer.retailer_code%>
+				</div>
+				<div class="col-md-4">
+					<div class="blue"><%=@retailer.retailer_name%></div>
+				</div>
+				<div class="col-md-4 blue"><%=@retailer.created_at.strftime("%d %b,%Y")%></div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">MUM</div>
+				<div class="col-md-4">
+					 
+				</div>
+				<div class="col-md-4">
+					<div class="blue"><%=@retailer.mum%></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">IMEI</div>
+				<div class="col-md-4">
+					 
+				</div>
+				<div class="col-md-4">
+					<div class="blue"><%=@retailer.imei%></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">State</div>
+				<div class="col-md-4">
+					 
+				</div>
+				<div class="col-md-4">
+					<div class="blue"><%=@retailer.state%></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">City</div>
+				<div class="col-md-4">
+					 
+				</div>
+				<div class="col-md-4">
+					<div class="blue"><%=@retailer.city%></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">Address</div>
+				<div class="col-md-4">
+					 
+				</div>
+				<div class="col-md-4">
+					<div class="blue"><%=@retailer.address%></div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4">Landmark</div>
+				<div class="col-md-4">
+					 
+				</div>
+				<div class="col-md-4">
+					<div class="blue"><%=@retailer.landmark%></div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4">Area of store</div>
+				<div class="col-md-4">
+					 
+				</div>
+				<div class="col-md-4">
+					<div class="blue"><%=@retailer.store_area%></div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4">Location of Retailer</div>
+				<div class="col-md-4">
+					 
+				</div>
+				<div class="col-md-4">
+					
+					<div class="blue">
+						<%=@retailer.location.lat if @retailer.location != nil%>,<%=@retailer.location.lng if @retailer.location != nil%>
+					 
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-4">Temp Code</div>
+				<div class="col-md-4">
+					 
+				</div>
+				<div class="col-md-4">
+					<div class="blue"><%=@retailer.tmpCode%></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-md-4">
+					 
+				</div>
+				<div class="col-md-4">
+					<div class="blue"></div>
+				</div>
+			</div>
+
+			 
+			
+			 
+
+		</div>
+	</div>
+
+	<div class="col-md-6">
+		<div class="shop_detals">
+			<h2>Sales</h2>
+			<div class="row">
+				<div class="col-md-5">
+					Store monthly sales quantity
+				</div>
+				<div class="col-md-3">
+					<div class="blue"></div>
+				</div>
+				<div class="col-md-4">
+					<div class="blue"><%=@retailer.store_monthly_sales_volume%></div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-5">
+					Store monthly sales value
+				</div>
+				<div class="col-md-3">
+					<div class="blue"></div>
+				</div>
+				<div class="col-md-4">
+					<div class="blue"><%=@retailer.store_monthly_sales_value%></div>
+				</div>
+			</div>
+			<h4>Monthly sales of competitors</h4>
+			<%@retailer.competition_details.each_slice(2) do |comp_detail|
+
+				comp_detail1 = comp_detail[0]
+				comp_detail2 = comp_detail[1]
+			%>
+			<div class="row">
+				<div class="col-md-3">
+					<%=comp_detail1.brand_name%>
+				</div>
+				 
+				<div class="col-md-3">
+					<div class="blue"><%=comp_detail1.sale%></div>
+				</div>
+				<%if comp_detail2 != nil%>
+					<div class="col-md-3">
+						<%=comp_detail2.brand_name%>
+					</div>
+					 
+					<div class="col-md-3">
+						<div class="blue"><%=comp_detail2.sale%></div>
+					</div>
+				<%end%>	
+			</div>
+			<%end%>
+			 
+
+			 
+			 
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+</div>
+
+<%@retailer.competition_details.each do |comp_detail|%> 
+<section class="comments_sectn">
+<div class="row">	
+<div class="col-lg-12">
+<div class="main-box clearfix">
+<div class="clearfix">
+<div class="common_page gsb_page">
+<h2><%=comp_detail.brand_name%></h2>
+<div class="comments_blk">
+<div class="comments">
+<div class="row">
+	<div class="col-lg-12">
+		<div class="row">
+			 
+
+				 
+					<div class="col-md-6">
+						Is SIS?
+					</div>
+					<div class="col-md-6">
+						<b class="blue"><%=Constant.to_lang(comp_detail.is_sis)%></b>
+					</div>
+				 
+			 	
+			 
+					<div class="col-md-6">
+						Is GSB?
+					</div>
+					<div class="col-md-6">
+						<b class="blue"><%=Constant.to_lang(comp_detail.is_gsb)%></b>
+					</div>
+
+					<div class="col-md-6">
+						Number of sales Promoters
+					</div>
+					<div class="col-md-6">
+						<b class="blue"><%=comp_detail.promoters%></b>
+					</div>
+					<div class="col-md-6">
+						Quantity
+					</div>
+					<div class="col-md-6">
+						<b class="blue"><%=comp_detail.volume%></b>
+					</div>
+				 
+			 			 	
+		</div>	
+		
+	</div>
+ </div>	
+ 	
+</div>
+ 
+ 
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<%end%>	
+<footer id="footer-bar" class="row">
+<p id="footer-copyright" class="col-xs-12">
+Powered by Gionee
+</p>
+</footer>
+</div>
+</div>
+</div>
+</div>
+ <script>
+    $("#retailer").attr("class","active")
+ </script>  
+
+ 

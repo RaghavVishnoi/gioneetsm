@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Parent role:</strong>
+  <%= @permit_role.parent_role %>
+</p>
+
+<p>
+  <strong>Child role:</strong>
+  <%= @permit_role.child_role %>
+</p>
+
+<%= link_to 'Edit', edit_permit_role_path(@permit_role) %> |
+<%= link_to 'Back', permit_roles_path %>
