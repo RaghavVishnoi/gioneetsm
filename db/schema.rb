@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160629143641) do
+ActiveRecord::Schema.define(version: 20160629151702) do
 
   create_table "associated_roles", force: :cascade do |t|
     t.integer  "object_id",   limit: 4
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20160629143641) do
 
   create_table "competition_details", force: :cascade do |t|
     t.string   "brand_name",  limit: 255
-    t.integer  "sale",        limit: 4
+    t.string   "sale",        limit: 255
     t.integer  "promoters",   limit: 4
     t.boolean  "is_sis"
     t.boolean  "is_gsb"
