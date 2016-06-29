@@ -1,6 +1,6 @@
 class Zsale < ActiveRecord::Base
 
- 	belongs_to :zuser,:class => 'Zuser',foreign_key: 'location_code', primary_key: 'location_code'
+ 	belongs_to :zuser,foreign_key: 'location_code', primary_key: 'location_code'
 
 	validates :retailer_name,presence: true
     validates :retailer_code,presence: true
