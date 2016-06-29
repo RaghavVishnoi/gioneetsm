@@ -30,30 +30,30 @@ class RetailersController < ApplicationController
     @retailer = Retailer.new(retailer_params.merge(user_id: user.id))
 
     respond_to do |format|
-      if params[:is_new] == 1
-            tmpCount = Retailer.where('length(tmpCount) != 0').order('updated_at desc').last
-            tmpData = Constant.tempCode(tmpCount)
-            @tmpCode = tmpData[:tmpCode]
-            @tmpCount = tmpData[:tmpCount]
-      end
       if is_exists?(@retailer.retailer_code) && @retailer.retailer_code != nil && @retailer.retailer_code != ''
         retailers = Retailer.where('retailer_code = ? OR tmpCode = ?',@retailer.retailer_code,@retailer.retailer_code)
         if retailers.length > 1
           retailer = retailers.destroy_all(['id NOT IN (?)', retailers.last(1).collect(&:id)]).first
           retailers.last.competition_details.destroy_all
           retailers.last.update(retailer_params)
-          retailers.last.update(tmpCode: @tmpCode,tmpCount: @tmpCount)
         else
           retailers.first.competition_details.destroy_all
           retailers.first.update_attributes(retailer_params)
-          retailers.first.update(tmpCode: @tmpCode,tmpCount: @tmpCount)
         end
-        
+        if params[:is_new] == 1
+            tmpCount = Retailer.where('length(tmpCount) != 0').order('updated_at asc').last
+            tmpData = Constant.tempCode(tmpCount)
+            retailers.first.update(tmpCode: tmpData[:tmpCode],tmpCount: tmpData[:tmpCount],retailer_code: '')  
+        end
         format.html { redirect_to @retailer, notice: 'Retailer was successfully created.' }
           format.json { render :show, status: :created, location: @retailer }
       else
         if @retailer.save!
-          @retailer.update(tmpCode: @tmpCode,tmpCount: @tmpCount)  
+          if params[:is_new] == 1
+            tmpCount = Retailer.where('length(tmpCount) != 0').order('updated_at asc').last
+            tmpData = Constant.tempCode(tmpCount)
+            @retailer.update(tmpCode: tmpData[:tmpCode],tmpCount: tmpData[:tmpCount],retailer_code: '')  
+          end
           format.html { redirect_to @retailer, notice: 'Retailer was successfully created.' }
           format.json { render :show, status: :created, location: @retailer }
         else
