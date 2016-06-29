@@ -87,7 +87,7 @@ class RetailersController < ApplicationController
   def is_visited
     if Retailer.where('upper(mum) = ? AND upper(retailer_code) = ?',params[:mum].upcase,params[:retailer_code].upcase).length != 0
       retailer = Retailer.where(mum: params[:mum],retailer_code: params[:retailer_code]).last
-      render :json => {result: true,message: "#{params[:mum]} have visited this shop on #{retailer.created_at.strftime("%d %b,%Y")}"}
+      render :json => {result: true,message: "#{params[:mum]} have visited this shop on #{retailer.updated_at.strftime("%d %b,%Y")}"}
     else
       render :json => {result: false,status: INVALID_CREDENTAILS_STATUS,message: "This shop was not visited by #{params[:mum]}!"}
     end
