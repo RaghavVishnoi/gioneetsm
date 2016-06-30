@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160630072219) do
+ActiveRecord::Schema.define(version: 20160630074438) do
 
   create_table "associated_roles", force: :cascade do |t|
     t.integer  "object_id",   limit: 4
@@ -115,7 +115,7 @@ ActiveRecord::Schema.define(version: 20160630072219) do
     t.string   "landmark",                   limit: 255
     t.float    "store_area",                 limit: 24
     t.integer  "store_monthly_sales_volume", limit: 4
-    t.integer  "store_monthly_sales_value",  limit: 4
+    t.string   "store_monthly_sales_value",  limit: 255
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
     t.string   "imei",                       limit: 255
