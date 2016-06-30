@@ -4,7 +4,7 @@ class CompetitionDetail < ActiveRecord::Base
 
 	validate :brand_name
 	validate  :sale
-	validate :promoter
+	validate :promoters
 	validate :is_sis
 	validate :is_gsb 
 end
