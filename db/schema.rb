@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160629151702) do
+ActiveRecord::Schema.define(version: 20160630072219) do
 
   create_table "associated_roles", force: :cascade do |t|
     t.integer  "object_id",   limit: 4
@@ -263,12 +263,12 @@ ActiveRecord::Schema.define(version: 20160629151702) do
     t.string   "pincode",           limit: 255
     t.string   "tin_number",        limit: 255
     t.string   "mobile_number",     limit: 255
-    t.string   "status",            limit: 255, default: "Active"
+    t.string   "status",            limit: 255,   default: "Active"
     t.string   "is_rsp_on_counter", limit: 255
     t.string   "counter_size",      limit: 255
     t.string   "nd",                limit: 255
     t.string   "lfr_chain",         limit: 255
-    t.string   "address",           limit: 255
+    t.text     "address",           limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "location_code",     limit: 255
