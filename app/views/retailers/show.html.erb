@@ -224,7 +224,13 @@
 						Number of sales Promoters
 					</div>
 					<div class="col-md-6">
-						<b class="blue"><%=comp_detail.promoters%></b>
+						<b class="blue">
+							<%if comp_detail.promoters != nil%>
+							<%=comp_detail.promoters%>
+							<%else%>
+								0
+							<%end%>
+						</b>
 					</div>
 					<div class="col-md-6">
 						Quantity
