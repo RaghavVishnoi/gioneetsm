@@ -20,7 +20,7 @@ class Download
 	end
 
 	def self.retailer_header
-		['mum','retailer_name','retailer_code','temp_code','state','city','address','location_code','lat','long','landmark','store_area','store_monthly_sales_volume','store_monthly_sales_value','generated on','IMEI','brand_name','sales quantity','sales value','promoters','is_sis','is_gsb','brand_name','sales quantity','sales value','promoters','is_sis','is_gsb','brand_name','sales quantity','sales value','promoters','is_sis','is_gsb','brand_name','sales quantity','sales value','promoters','is_sis','is_gsb','brand_name','promoters','sales quantity','sales value','promoters','is_sis','is_gsb','brand_name','sales quantity','sales value','promoters','is_sis','is_gsb'].flatten.join(',')
+		['mum','retailer_name','retailer_code','temp_code','state','city','address','location_code','lat','long','landmark','store_area','store_monthly_sales_volume','store_monthly_sales_value','generated on','IMEI','brand_name','sales quantity','sales value','promoters','is_sis','is_gsb','brand_name','sales quantity','sales value','promoters','is_sis','is_gsb','brand_name','sales quantity','sales value','promoters','is_sis','is_gsb','brand_name','sales quantity','sales value','promoters','is_sis','is_gsb','brand_name','sales quantity','sales value','promoters','is_sis','is_gsb','brand_name','sales quantity','sales value','promoters','is_sis','is_gsb'].flatten.join(',')
 	end
 
 	def self.retailer_body(retailer)
@@ -35,7 +35,7 @@ class Download
 	end
 
 	def self.retailer_path
-		"public/retailer_csv/"+Time.now.to_s+".csv"
+		"public/retailer_csv/"+Time.now.strftime("%d-%m-%y_%H-%M").to_s+".csv"
 	end
 
 	def self.sales_beat(from,to,location_code)
@@ -72,7 +72,7 @@ class Download
 	end
 
 	def self.sales_beat_path
-		"public/sales_beat_csv/"+Time.now.to_s+".csv"
+		"public/sales_beat_csv/"+Time.now.strftime("%d-%m-%y_%H-%M").to_s+".csv"
 	end
 
 	def self.target(from,to,location_code)
@@ -102,7 +102,7 @@ class Download
 	end
 
 	def self.target_path
-		"public/target_csv/"+Time.now.to_s+".csv"
+		"public/target_csv/"+Time.now.strftime("%d-%m-%y_%H-%M").to_s+".csv"
 	end
 
 	def self.location_code(current_user,params)
