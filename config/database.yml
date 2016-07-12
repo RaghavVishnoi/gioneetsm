@@ -9,11 +9,11 @@ default: &default
   pool: 5
   timeout: 5000
   username: root
-  password: aniket123@
+  password: raghav@12345
 
 development:
   <<: *default
-  database: gquestion_production
+  database: new_gquestion
    
 
 # Warning: The database defined as "test" will be erased and
