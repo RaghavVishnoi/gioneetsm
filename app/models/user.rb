@@ -302,6 +302,8 @@ class User < ActiveRecord::Base
         @location_type = 'ASM'
       elsif user.roles.pluck(:name).include?('TSM')
         @location_type = 'TSM'
+      else
+        @location_type = 'Gionee Admin'
       end
           Zuser.create!(
           location_code: user.location_code,
