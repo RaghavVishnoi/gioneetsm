@@ -33,7 +33,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 # gem 'mysql2', '~> 0.4.4'
-gem 'pg'
+gem 'pg', '~> 0.18.4'
 
 gem "carrierwave"
 gem 'rails-i18n', '~> 4.0', '>= 4.0.8'
