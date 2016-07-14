@@ -5,7 +5,7 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: mysql2
+  adapter: postgresql
   pool: 5
   timeout: 5000
   username: root
@@ -21,11 +21,4 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test.sqlite3
-
-production:
-  <<: *default
-  database: gquestions_mum
-  username: root
-  password: FGhuytR%t4RfY^5rtY8uh
-  timeout: 5000
+  database: db/test.sqlite3  
