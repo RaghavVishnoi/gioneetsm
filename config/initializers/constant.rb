@@ -23,4 +23,4 @@ ADMIN_ROLES = ['superadmin','Gionee Admin']
 RADIUS = 3
 UPDATE_USER_ROLES = ['superadmin','Gionee Admin','ND Admin']
 
-CRASH_REPORT_DEFAULT_EMAIL = ['raghav.singh@lptpl.com','bhavna.goal@lptpl.com']
+CRASH_REPORT_DEFAULT_EMAIL = ['raghav.singh@lptpl.com','bhavna.goel@lptpl.com']

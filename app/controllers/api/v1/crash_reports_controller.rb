@@ -4,7 +4,7 @@ class Api::V1::CrashReportsController < ApplicationController
 
 
 	def index
-		CrashReportMailer.report(params[:message])
+		CrashReportMailer.report(params[:message]).deliver_now
 		render :json => {result: true}
 	end
 
