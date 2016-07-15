@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
 
   def self.users(current_user,params)
     if params[:role] != nil && params[:role] != ""
-      users = role_users(Role.where(id: params[:role].split(',')))
+        users = role_users(Role.where(id: params[:role].split(',')))
       if params[:search] != nil && params[:search] != ""
         Zuser.users(current_user).where(id: users.pluck(:id)).where('email like ? OR lower(location_code) like ?',"%#{params[:search]}%","%#{params[:search].downcase}%")
       else
@@ -59,13 +59,13 @@ class User < ActiveRecord::Base
       if params[:search] != nil && params[:search] != ""
         Zuser.users(current_user).where('email like ? OR lower(location_code) like ?',"%#{params[:search]}%","%#{params[:search].downcase}%")
       else
-        Zuser.users(current_user)
+         Zuser.users(current_user)
       end
     end
   end
 
   def self.permit_roles(roles)
-    if roles.pluck(:name).any?{|role| ADMIN_ROLES.include?(role)}
+     if roles.pluck(:name).any?{|role| ADMIN_ROLES.include?(role)}
       if roles.pluck(:name).include?('superadmin')
         Role.where.not(name: 'superadmin')
       elsif roles.pluck(:name).include?('Gionee Admin')
@@ -73,8 +73,8 @@ class User < ActiveRecord::Base
       end         
     else
       @roles = []
-      roles.each{|role| @roles.push(PermitRole.where(parent_role: role.id).pluck(:child_role))}
-      Role.where(id: @roles)
+       roles.each{|role| @roles.push(PermitRole.where(parent_role: role.id).pluck(:child_role))}
+        Role.where(id: @roles)
     end 
   end
    
@@ -151,7 +151,7 @@ class User < ActiveRecord::Base
   end
 
   def self.role_users(roles)
-    User.joins(:roles).where('roles.name IN (?)',roles.pluck(:name))
+      User.joins(:roles).where('roles.name IN (?)',roles.pluck(:name))
   end
 
 

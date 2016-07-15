@@ -1,4 +1,4 @@
-<!-- <div id="content-wrapper">
+<div id="content-wrapper">
 <div class="row">
 <div class="col-lg-12">
 
@@ -22,13 +22,13 @@
       <table class="table user-list table-hover retailers_tbl">
         <thead>
           <tr>
-            <th><span>MUM</span></th>
-            <th><span>RDS</span></th>
-            <th><span>FOS</span></th>
-            <th><span>IMEI</span></th>
-            <th><span>Date</span></th>
-            <th><span>Value Target</span></th>
-            <th><span>Volume Target</span></th>
+            <th><div class = "table-data-left"><span>MUM</span></div></th>
+            <th><div class = "table-data-left"><span>RDS</span></div></th>
+            <th><div class = "table-data-left"><span>FOS</span></div></th>
+            <th><div class = "table-data-right"><span>IMEI</span></div></th>
+            <th><div class = "table-data-right"><span>Date</span></div></th>
+            <th><div class = "table-data-right"><span>Value Target</span></div></th>
+            <th><div class = "table-data-right"><span>Volume Target</span></div></th>
             <th></th>
           </tr>
         </thead>
@@ -36,27 +36,39 @@
                <%@targets.each do |target|%>    
           <tr>
             <td>
-              
+              <div class = "table-data-left">
             <%=target.mum%> 
-              
+              </div>
             </td>
             <td>
+            <div class = "table-data-left">
             <%=target.rds%>
+          </div>
             </td>
             <td>
+             <div class = "table-data-left">
             <%=target.fos%>
+          </div>
             </td>
             <td>
+              <div class = "table-data-right">
              <%=target.imei%>
+           </div>
             </td>
             <td>
+              <div class = "table-data-right">
              <%=target.date%>
+           </div>
             </td>
             <td>
+              <div class = "table-data-right">
             <%=target.value_target%>
+          </div>
             </td>
              <td>
+              <div class = "table-data-right">
           <%=target.volume_target%>
+        </div>
             </td>
             <td style="text-align:right;">
               <%= link_to target,:class=> 'table-link' do %>
@@ -93,9 +105,9 @@ Powered by Cube Theme.
 </div>
 </div>
 
-  -->
+ 
 
-  <div id="content-wrapper">
+  <!-- <div id="content-wrapper">
         
           <div class="row">
             <div class="col-lg-12">
@@ -162,7 +174,7 @@ Powered by Cube Theme.
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   <script>
     $("#target").attr("class","active")
   </script>  

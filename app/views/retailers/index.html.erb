@@ -1,4 +1,4 @@
-<!-- <div id="content-wrapper">
+<div id="content-wrapper">
 <div class="row">
 <div class="col-lg-12">
 
@@ -22,13 +22,13 @@
       <table class="table user-list table-hover retailers_tbl">
         <thead>
           <tr>
-            <th><span>Mum Name</span></th>
-            <th><span>Retailer Name</span></th>
-            <th><span>City</span></th>
-            <th><span>State</span></th>
-            <th><span>Generated On</span></th>
-            <th><span>Sales Volumne</span></th>
-            <th><span>Sales Value</span></th>
+            <th><div class = "table-data-left"><span >Mum Name</span></div></th>
+            <th><div class = "table-data-left"><span>Retailer Name</span></div></th>
+            <th><div class = "table-data-left"><span>City</span></div></th>
+            <th><div class = "table-data-left"><span>State</span></div></th>
+            <th><div class = "table-data-right"><span>Generated On</span></div></th>
+            <th><div class = "table-data-right"><span>Sales Volumne</span></th>
+            <th><div class = "table-data-right"><span>Sales Value</span></div></th>
             <th></th>
           </tr>
         </thead>
@@ -36,27 +36,39 @@
                <%@retailers.each do |retailer|%>  
           <tr>
             <td>
-              
-             <%=retailer.mum%>
-              
+            <div class = "table-data-left">
+              <%=retailer.mum%>
+            </div>
             </td>
             <td>
+              <div class = "table-data-left">
               <%=retailer.retailer_name%>
+            </div>
             </td>
             <td>
+              <div class = "table-data-left">
              <%=retailer.city%>
+           </div>
             </td>
             <td>
+              <div class = "table-data-left">
              <%=retailer.state%>
+           </div>
             </td>
             <td>
-             <%=retailer.created_at.strftime("%d %b,%Y")%> 
+              <div class = "table-data-right">
+             <%=retailer.created_at.strftime("%d %b,%Y")%>
+             </div> 
             </td>
             <td>
+              <div class = "table-data-right">
              <%=retailer.store_monthly_sales_volume%>
+           </div>
             </td>
              <td>
+              <div class = "table-data-right">
             <%=retailer.store_monthly_sales_value%>
+          </div>
             </td>
             <td style="text-align:right;">
               <%= link_to retailer,:class=> 'table-link' do %>
@@ -94,11 +106,11 @@ Powered by Cube Theme.
 </div>
 </div>
 
-  -->
+ 
 
   
         
-         <div id="content-wrapper">
+        <!--  <div id="content-wrapper">
         
           <div class="row">
             <div class="col-lg-12">
@@ -180,7 +192,7 @@ Powered by Cube Theme.
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
  <script>
     $("#retailer").attr("class","active")
   </script>   
