@@ -1,6 +1,8 @@
 class ChangeDatattypeIntoSalesBeatsAndStocks < ActiveRecord::Migration
   def change
-  	change_column :sales_beats,:stock_count,:integer
-  	change_column :stocks,:count,:string
+  	remove_column :sales_beats,:stock_count
+  	add_column :sales_beats,:stock_count,:integer
+  	remove_column :stocks,:count
+  	add_column :stocks,:count,:string
   end
 end

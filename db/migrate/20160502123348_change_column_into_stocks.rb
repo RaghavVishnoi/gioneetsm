@@ -1,5 +1,6 @@
 class ChangeColumnIntoStocks < ActiveRecord::Migration
   def change
-  	change_column :stocks,:count,:integer
+  	remove_column :stocks,:count
+  	add_column :stocks,:count,:integer
   end
 end

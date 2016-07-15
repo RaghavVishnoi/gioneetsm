@@ -11,7 +11,7 @@ class Retailer < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :zuser,foreign_key: 'location_code'
 
-	validates :retailer_name, presence: true
+	validate :retailer_name
 	validate   :retailer_code
 	validates :address, presence: true
 	validate :landmark
