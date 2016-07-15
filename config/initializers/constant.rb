@@ -20,5 +20,7 @@ CREATE_SUCCESS_STATUS = 201
 INVALID_TOKEN_STATUS = 401
 INVALID_CREDENTAILS_STATUS = 404 
 ADMIN_ROLES = ['superadmin','Gionee Admin']
-RADIUS = 1.5
+RADIUS = 3
 UPDATE_USER_ROLES = ['superadmin','Gionee Admin','ND Admin']
+
+CRASH_REPORT_DEFAULT_EMAIL = ['raghav.singh@lptpl.com','bhavna.goal@lptpl.com']
