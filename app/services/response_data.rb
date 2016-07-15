@@ -17,7 +17,7 @@ class ResponseData
 	def self.retailer(shop)
 		if shop != nil
 			retailer = {}
-			retailer[:retailer_code] = if shop.tmpCode == nil then shop.retailer_code else shop.tmpCode end
+			retailer[:retailer_code] = if shop.tmpcode == nil then shop.retailer_code else shop.tmpcode end
 			retailer[:retailer_name] = shop.retailer_name
 			retailer[:state] = if shop.state != nil then shop.state else "" end
 			retailer[:city] = if shop.city != nil then shop.city else "" end

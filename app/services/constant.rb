@@ -78,12 +78,12 @@ class Constant
 	def self.tempCode(data)
  		tmpData = {}
 		if data == nil
-			tmpData[:tmpCode] = "TEMPRT00001"
-			tmpData[:tmpCount] = 1
+			tmpData[:tmpcode] = "TEMPRT00001"
+			tmpData[:tmpcount] = 1
 		else
-			tmpCount = data.tmpCount	
-			tmpData[:tmpCode] = "TEMPRT"+('%05d' %(tmpCount.to_i + 00001)).to_s
-			tmpData[:tmpCount] = tmpCount.to_i + 1
+			tmpcount = data.tmpcount	
+			tmpData[:tmpcode] = "TEMPRT"+('%05d' %(tmpcount.to_i + 00001)).to_s
+			tmpData[:tmpcount] = tmpcount.to_i + 1
 		end
 		tmpData
 	end 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160630074438) do
+ActiveRecord::Schema.define(version: 20160715120214) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -115,8 +115,8 @@ ActiveRecord::Schema.define(version: 20160630074438) do
     t.string   "retailer_phone"
     t.integer  "user_id"
     t.string   "location_code"
-    t.string   "tmpCode"
-    t.integer  "tmpCount"
+    t.string   "tmpcode"
+    t.integer  "tmpcount"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -212,7 +212,6 @@ ActiveRecord::Schema.define(version: 20160630074438) do
     t.string   "profile_path"
     t.integer  "status",                         default: 1
     t.string   "account"
-    t.integer  "designation_id",                 default: 0
     t.datetime "last_login_time"
     t.datetime "last_logout_time"
     t.datetime "token_expiry"
@@ -291,5 +290,4 @@ ActiveRecord::Schema.define(version: 20160630074438) do
   add_foreign_key "user_reporting_managers", "users", column: "reporting_manager_id"
   add_foreign_key "user_states", "states"
   add_foreign_key "user_states", "users"
-  add_foreign_key "users", "designations"
 end

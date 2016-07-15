@@ -31,7 +31,7 @@ class RetailersController < ApplicationController
 
     respond_to do |format|
       if is_exists?(@retailer.retailer_code) && @retailer.retailer_code != nil && @retailer.retailer_code != ''
-        retailers = Retailer.where('retailer_code = ? OR tmpCode = ?',@retailer.retailer_code,@retailer.retailer_code)
+        retailers = Retailer.where('retailer_code = ? OR tmpcode = ?',@retailer.retailer_code,@retailer.retailer_code)
         if retailers.length > 1
           retailer = retailers.destroy_all(['id NOT IN (?)', retailers.last(1).collect(&:id)]).first
           retailers.last.competition_details.destroy_all
@@ -41,18 +41,18 @@ class RetailersController < ApplicationController
           retailers.first.update_attributes(retailer_params)
         end
         if params[:is_new] == 1
-            tmpCount = Retailer.where('length(tmpCode) != 0').order('tmpCount').last
-            tmpData = Constant.tempCode(tmpCount)
-            Retailer.where(retailer_code: @retailer.retailer_code).update_all(tmpCode: tmpData[:tmpCode],tmpCount: tmpData[:tmpCount],retailer_code: @retailer.retailer_code)  
+            tmpcount = Retailer.where('length(tmpcode) != 0').order('tmpcount').last
+            tmpData = Constant.tempCode(tmpcount)
+            Retailer.where(retailer_code: @retailer.retailer_code).update_all(tmpcode: tmpData[:tmpcode],tmpcount: tmpData[:tmpcount],retailer_code: @retailer.retailer_code)  
         end
           format.html { redirect_to @retailer, notice: 'Retailer was successfully created.' }
           format.json { render :show, status: :created, location: @retailer }
       else
         if @retailer.save!
           if params[:is_new] == 1 
-            tmpCount = Retailer.where('length(tmpCode) != 0').order('tmpCount').last
-            tmpData = Constant.tempCode(tmpCount)
-            @retailer.update(tmpCode: tmpData[:tmpCode],tmpCount: tmpData[:tmpCount],retailer_code: '')  
+            tmpcount = Retailer.where('length(tmpcode) != 0').order('tmpcount').last
+            tmpData = Constant.tempCode(tmpcount)
+            @retailer.update(tmpcode: tmpData[:tmpcode],tmpcount: tmpData[:tmpcount],retailer_code: '')  
           end
           format.html { redirect_to @retailer, notice: 'Retailer was successfully created.' }
           format.json { render :show, status: :created, location: @retailer }
@@ -113,6 +113,6 @@ class RetailersController < ApplicationController
     end
 
     def is_exists?(retailer_code)
-      Retailer.exists?(['retailer_code = ? OR tmpCode = ?',retailer_code,retailer_code])
+      Retailer.exists?(['retailer_code = ? OR tmpcode = ?',retailer_code,retailer_code])
     end
 end

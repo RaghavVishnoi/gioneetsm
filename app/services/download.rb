@@ -31,7 +31,7 @@ class Download
 			@lat = retailer.location.lat
 			@lng = retailer.location.lng
 		end
-		[retailer.mum,retailer.retailer_name,retailer.retailer_code,retailer.tmpCode,retailer.state,retailer.city,retailer.address,retailer.location_code,@lat,@lng,retailer.landmark,retailer.store_area,retailer.store_monthly_sales_volume,retailer.store_monthly_sales_value,retailer.created_at.strftime("%d %b %Y"),retailer.imei,retailer.competition_details.pluck(:brand_name,:volume,:sale,:promoters,:is_sis,:is_gsb)].flatten.map {|v| "\"#{v.to_s.gsub('"', '""')}\"" }.join(',')
+		[retailer.mum,retailer.retailer_name,retailer.retailer_code,retailer.tmpcode,retailer.state,retailer.city,retailer.address,retailer.location_code,@lat,@lng,retailer.landmark,retailer.store_area,retailer.store_monthly_sales_volume,retailer.store_monthly_sales_value,retailer.created_at.strftime("%d %b %Y"),retailer.imei,retailer.competition_details.pluck(:brand_name,:volume,:sale,:promoters,:is_sis,:is_gsb)].flatten.map {|v| "\"#{v.to_s.gsub('"', '""')}\"" }.join(',')
 	end
 
 	def self.retailer_path

@@ -9,7 +9,7 @@ class Api::V1::ZsalesController < ApplicationController
  				render :json => {:result => false,status: INVALID_CREDENTAILS_STATUS,:message => 'No retailer found!'}
  			end
  		elsif params[:type] == 'code'
- 			@retailer = Retailer.find_by('(lower(retailer_code) = ? OR lower(tmpCode) = ?) AND location_code IN (?)',params[:retailer_code].downcase,params[:retailer_code].downcase,location_code(user))
+ 			@retailer = Retailer.find_by('(lower(retailer_code) = ? OR lower(tmpcode) = ?) AND location_code IN (?)',params[:retailer_code].downcase,params[:retailer_code].downcase,location_code(user))
  			if @retailer != nil
  				render :json => {:result => true,:object => @retailer}
  			else
