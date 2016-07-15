@@ -62,11 +62,15 @@
                 
                 <%= image_tag  "#{if current_user.profile_path != nil && current_user.profile_path.length != 0  then current_user.profile_path else '/assets/2000px-User_icon_2.svg.png' end}" ,:class=>'profile_image' %>
                
-                <div class="user-box">
+                <div class="user-box user-box-custom">
                   <span class="name">
                     <a href="/users/<%=current_user.id%>/edit" class="dropdown-toggle" >
                      <%=User.full_name(current_user)%>                      
                     </a>
+
+                    <% if params[:action] == 'show' || params[:action] == 'edit' || params[:action] == 'new'%>
+                       <a href="javascript:history.back()" class="back-btn"><i class="fa fa-chevron-left" aria-hidden="true" style="color: white;font-size: 24px;margin-left: 92px; "></i></a>
+                      <%end %>
                       
                   </span>
                   

@@ -1,4 +1,4 @@
-<!-- <div id="content-wrapper">
+<div id="content-wrapper">
 <div class="row">
 <div class="col-lg-12">
 
@@ -22,13 +22,13 @@
       <table class="table user-list table-hover retailers_tbl">
         <thead>
           <tr>
-            <th><span>Retailer Code</span></th>
-            <th><span> MUM/FOS</span></th>
-            <th><span>RDS </span></th>
-            <th><span> Store Location </span></th>
-            <th><span>Date   </span></th>
-            <th><span> IMEI  </span></th>
-            <th><span> Payment Issue  </span></th>
+            <th><div class = "table-data-right"><span>Retailer Code</span></div></th>
+            <th><div class = "table-data-left"><span> MUM/FOS</span></div></th>
+            <th><div class = "table-data-left"><span>RDS </span></div></th>
+            <th><div class = "table-data-right"><span> Store Location </span></div></th>
+            <th><div class = "table-data-right"><span>Date   </span></div></th>
+            <th><div class = "table-data-right"><span> IMEI  </span></div></th>
+            <th><div class = "table-data-left"><span> Payment Issue  </span></div></th>
             <th></th>
           </tr>
         </thead>
@@ -36,27 +36,39 @@
               <%@sales_beats.each do |sales_beat|%> 
           <tr>
             <td>
-              
+              <div class = "table-data-right">
          <%=sales_beat.retailer_code%>
-              
+              </div>
             </td>
             <td>
+              <div class = "table-data-left">
            <%=sales_beat.mum%>
+         </div>
             </td>
             <td>
+              <div class = "table-data-left">
              <%=sales_beat.rds%>
+           </div>
             </td>
             <td>
+               <div class = "table-data-right">
            <%=sales_beat.location.lat if sales_beat.location != nil%>,<%=sales_beat.location.lng if sales_beat.location != nil%>
+         </div>
             </td>
             <td>
+               <div class = "table-data-right">
              <%=sales_beat.date%>
+           </div>
             </td>
             <td>
+               <div class = "table-data-right">
         <%=sales_beat.imei%>
+      </div>
             </td>
              <td>
+               <div class = "table-data-left">
             <%=Constant.to_lang(sales_beat.payment_issue)%>
+          </div>
             </td>
             <td style="text-align:right;">
               <%= link_to sales_beat,:class=> 'table-link' do %>
@@ -93,10 +105,10 @@ Powered by Cube Theme.
 </div>
 </div>
 
-  -->
+   
 
   
-        <div id="content-wrapper">
+       <!--  <div id="content-wrapper">
         
           <div class="row">
             <div class="col-lg-12">
@@ -178,7 +190,7 @@ Powered by Cube Theme.
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
  <script>
     $("#sales_beat").attr("class","active")
   </script>  

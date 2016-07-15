@@ -13,7 +13,7 @@ default: &default
 
 development:
   <<: *default
-  database: gquestion_production
+  database: new_gquestion
    
 
 # Warning: The database defined as "test" will be erased and

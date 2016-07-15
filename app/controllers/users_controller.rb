@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 	def index
 		session[:prev_url] = request.fullpath
   		@users = User.users(current_user,params).order("id").paginate(per_page: PER_PAGE,page: (params[:page] || 1)) 
-	end
+  	end
 
 	def new
 		@user=User.new

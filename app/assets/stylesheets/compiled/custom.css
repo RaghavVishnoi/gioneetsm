@@ -201,3 +201,41 @@ select#type option{background: #fff;color: #000;}
 #resize-image{width: 75px;height:60px;margin-left: 0px;}
 .mr-btm{margin-bottom: 1.5%;}
 .pd-lft15{padding-left: 15px !important;}
+
+
+.user-box-custom{
+  width: 100%;
+  }
+  .user-box-custom span.name{width: 100% !important;display: block; position: relative;}
+  .user-box-custom span.name a.dropdown-toggle{overflow: hidden;
+  display: block; text-overflow: ellipsis;width: 70%;white-space: nowrap;}
+  .user-box-custom span.name a.back-btn{position: absolute;right: 0;top:0;}
+
+
+  .user-list tbody td .user-link-name {
+    display: block;
+    font-size: 1.25em;
+    padding-top: 3px;
+    margin-left: 60px;
+    width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.email{width:170px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;display: block;}
+.user-list tbody td > .user-img {    
+    position: absolute;
+    top:23px;
+}
+.user-list tbody td.nowrap{white-space: nowrap;}
+
+.table-data-left{
+  text-align: left;
+}
+ .table-data-right{
+  text-align: right;
+}
+ 

@@ -66,8 +66,8 @@ class Zuser < ActiveRecord::Base
 			location_code = mum.pluck(:location_code).uniq+zsm.pluck(:location_code).uniq+bh.pluck(:location_code)+cbh.pluck(:location_code).uniq
 		elsif current_user.roles.pluck(:name).include?('CBH')
 		 	location_code = location_code('CBH',current_user)
- 			location_code = location_code[:bh_location_code]+location_code[:zsm_location_code]+location_code[:mum_location_code]+location_code[:asm_location_code]
-		elsif current_user.roles.pluck(:name).include?('BH')
+ 			location_code = location_code[:zsm_location_code]+location_code[:mum_location_code]+location_code[:asm_location_code]
+ 		elsif current_user.roles.pluck(:name).include?('BH')
 			location_code = location_code('BH',current_user)
  			location_code = location_code[:zsm_location_code]+location_code[:mum_location_code]+location_code[:asm_location_code]
  		elsif current_user.roles.pluck(:name).include?('ZSM')
@@ -75,7 +75,7 @@ class Zuser < ActiveRecord::Base
 			location_code = location_code[:mum_location_code]+location_code[:asm_location_code] 
 		end
 		if current_user.roles.any?{|role| ADMIN_ROLES.include?(role.name)}	
- 			User.role_users(Role.per_roles(current_user.roles))			
+  			User.role_users(Role.per_roles(current_user.roles))			
  		else
 			User.where(location_code: location_code)			
 		end
@@ -83,14 +83,14 @@ class Zuser < ActiveRecord::Base
 
 	def self.location_code(role,current_user)
 		current_location_code = self.where(email: current_user.email).pluck(:location_code)
-		case role
+  		case role
 		when 'ND Admin'
 			self.joins(:zsales).where('zsales.nd = ?',current_user.account)
 		when 'CBH'
 			location_code = {}
 			#bh_location_code = self.where(parent_location_code: current_location_code).pluck(:location_code)
 			zsm_location_code = self.where(parent_location_code: current_location_code).pluck(:location_code)
-			asm_location_code = self.where(parent_location_code: zsm_location_code).pluck(:location_code)
+ 			asm_location_code = self.where(parent_location_code: zsm_location_code).pluck(:location_code)
 			mum_location_code = self.where(parent_location_code: asm_location_code).pluck(:location_code)
 			#location_code[:bh_location_code] = bh_location_code
 			location_code[:zsm_location_code] = zsm_location_code
