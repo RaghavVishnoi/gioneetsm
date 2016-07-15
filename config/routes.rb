@@ -51,7 +51,7 @@ Rails.application.routes.draw do
       post "/zsales/rds"
       post "/user", to: 'users#update'
       get "/versions", to: 'versions#index'
-      get "/crash_reports", to: 'crash_reports#index'
+      post "/crash_reports", to: 'crash_reports#create'
       #resource :user,only: [:update]
     end
   end
