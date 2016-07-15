@@ -7,9 +7,9 @@
 	<thead><th>Here is crash report:</th></thead>
 	<tbody></tbody>
 </table>
-<table><tr><td><b>Date:</b></td><td><%=Time.now.strftime("%d %b,%Y")%></td></tr>
-<tr><td><b>Exception:</b></td><td></td></tr>
-<tr><td colspan="2"><%= @message%></td></tr>
+<table width="500"><tr><td><b>Date:</b></td><td><%=Time.now.strftime("%d %b,%Y")%></td></tr>
+<tr><td><b>Exception</b></td><td></td></tr>
+<tr><td colspan="2"><%=@message%></td></tr>
 </table>
 </body>
 </html>
