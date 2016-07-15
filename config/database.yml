@@ -9,7 +9,7 @@ default: &default
   pool: 5
   timeout: 5000
   username: root
-  password: aniket123@
+  password: raghav@12345
 
 development:
   <<: *default

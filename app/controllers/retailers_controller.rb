@@ -41,7 +41,7 @@ class RetailersController < ApplicationController
           retailers.first.update_attributes(retailer_params)
         end
         if params[:is_new] == 1
-            tmpCount = Retailer.where('length(tmpCount) != 0').order('updated_at asc').last
+            tmpCount = Retailer.where('length(tmpCode) != 0').order('tmpCount').last
             tmpData = Constant.tempCode(tmpCount)
             Retailer.where(retailer_code: @retailer.retailer_code).update_all(tmpCode: tmpData[:tmpCode],tmpCount: tmpData[:tmpCount],retailer_code: @retailer.retailer_code)  
         end
@@ -50,7 +50,7 @@ class RetailersController < ApplicationController
       else
         if @retailer.save!
           if params[:is_new] == 1 
-            tmpCount = Retailer.where('length(tmpCount) != 0').order('updated_at').last
+            tmpCount = Retailer.where('length(tmpCode) != 0').order('tmpCount').last
             tmpData = Constant.tempCode(tmpCount)
             @retailer.update(tmpCode: tmpData[:tmpCode],tmpCount: tmpData[:tmpCount],retailer_code: '')  
           end
