@@ -1,12 +1,13 @@
-class Download
+ class Download
 	require 'fileutils'
 
 	def self.retailers(from,to,location_code)	 
 		if from == nil || to ==nil || Time.parse(from) > Time.parse(to)
 			0
 		else
+			@file_path = retailer_path(from,to)
 			FileUtils.mkdir_p("#{Rails.root}/public/retailer_csv") unless Dir.exists?("#{Rails.root}/public/retailer_csv") 
-			file ||= File.new retailer_path, "w+"
+			file ||= File.new @file_path, "w+"
 			file.puts retailer_header
  			@retailers = Retailer.where(location_code: location_code,updated_at: (Time.parse(from).to_date.beginning_of_day)..(Time.parse(to).to_date.end_of_day))			 
 			if @retailers.length != 0
@@ -15,7 +16,7 @@ class Download
 		 		end
 		 	end	
 	 		file.close 
-	 		retailer_path
+	 		@file_path
  		end
 	end
 
@@ -31,19 +32,20 @@ class Download
 			@lat = retailer.location.lat
 			@lng = retailer.location.lng
 		end
-		[retailer.mum,retailer.retailer_name,retailer.retailer_code,retailer.tmpcode,retailer.state,retailer.city,retailer.address,retailer.location_code,@lat,@lng,retailer.landmark,retailer.store_area,retailer.store_monthly_sales_volume,retailer.store_monthly_sales_value,retailer.created_at.strftime("%d %b %Y"),retailer.imei,retailer.competition_details.pluck(:brand_name,:volume,:sale,:promoters,:is_sis,:is_gsb)].flatten.map {|v| "\"#{v.to_s.gsub('"', '""')}\"" }.join(',')
+		[retailer.mum,retailer.retailer_name,retailer.retailer_code,retailer.tmpCode,retailer.state,retailer.city,retailer.address,retailer.location_code,@lat,@lng,retailer.landmark,retailer.store_area,retailer.store_monthly_sales_volume,retailer.store_monthly_sales_value,retailer.created_at.strftime("%d %b %Y"),retailer.imei,retailer.competition_details.pluck(:brand_name,:volume,:sale,:promoters,:is_sis,:is_gsb)].flatten.map {|v| "\"#{v.to_s.gsub('"', '""')}\"" }.join(',')
 	end
 
-	def self.retailer_path
-		"public/retailer_csv/"+Time.now.strftime("%d-%m-%y_%H-%M").to_s+".csv"
+	def self.retailer_path(from,to)
+		"public/retailer_csv/"+Time.parse(from).to_date.to_s+"_"+Time.parse(to).to_date.to_s+".csv"
 	end
 
 	def self.sales_beat(from,to,location_code)
 		if from == nil || to ==nil || Time.parse(from) > Time.parse(to)
 			0
 		else
+			@file_path = sales_beat_path(from,to)
 			FileUtils.mkdir_p("#{Rails.root}/public/sales_beat_csv") unless Dir.exists?("#{Rails.root}/public/sales_beat_csv") 
-			sfile ||= File.new sales_beat_path, "w+"
+			sfile ||= File.new @file_path, "w+"
 			sfile.puts sales_beat_header
 			@sales_beat = SalesBeat.where(location_code: location_code,created_at: (Time.parse(from).to_date.beginning_of_day)..(Time.parse(to).to_date.end_of_day))			 
 			if @sales_beat.length != 0
@@ -52,7 +54,7 @@ class Download
 		 		end
 		 	end
 	 		sfile.close 
-	 		sales_beat_path
+	 		@file_path
 	 	end
 	end
 
@@ -71,16 +73,17 @@ class Download
 		[sales_beat.mum,sales_beat.rds,sales_beat.date,sales_beat.retailer_code,sales_beat.location_code,@lat,@lng,Constant.to_sub(sales_beat.is_sis_maintained),Constant.to_sub(sales_beat.is_gsb_maintained),Constant.to_sub(sales_beat.gcs_present),sales_beat.imei,sales_beat.stocks.pluck(:mod_name,:count)].flatten.map {|v| "\"#{v.to_s.gsub('"', '""')}\"" }.join(',')
 	end
 
-	def self.sales_beat_path
-		"public/sales_beat_csv/"+Time.now.strftime("%d-%m-%y_%H-%M").to_s+".csv"
+	def self.sales_beat_path(from,to)
+		"public/sales_beat_csv/"+Time.parse(from).to_date.to_s+"_"+Time.parse(to).to_date.to_s+".csv"
 	end
 
 	def self.target(from,to,location_code)
 		if from == nil || to == nil || Time.parse(from) > Time.parse(to)
 			0
 		else
+			@file_path = target_path(from,to)
 			FileUtils.mkdir_p("#{Rails.root}/public/target_csv") unless Dir.exists?("#{Rails.root}/public/target_csv") 
-			tfile ||= File.new target_path, "w+"
+			tfile ||= File.new @file_path, "w+"
 			tfile.puts target_header
 			@targets = Target.where(location_code: location_code,created_at: (Time.parse(from).to_date.beginning_of_day)..(Time.parse(to).to_date.end_of_day))			 
 			if @targets.length != 0
@@ -89,7 +92,7 @@ class Download
 		 		end
 		 	end
 	 		tfile.close 
-	 		target_path
+	 		@file_path
 	 	end
 	end
 
@@ -101,8 +104,8 @@ class Download
 		[target.mum,target.rds,target.location_code,target.date,target.fos,target.imei,target.value_target,target.volume_target,target.plan_remarks,target.review_remarks,target.focus_models.pluck(:target_model_name,:sale)].flatten.join(',')
 	end
 
-	def self.target_path
-		"public/target_csv/"+Time.now.strftime("%d-%m-%y_%H-%M").to_s+".csv"
+	def self.target_path(from,to)
+		"public/target_csv/"+Time.parse(from).to_date.to_s+"_"+Time.parse(to).to_date.to_s+".csv"
 	end
 
 	def self.location_code(current_user,params)

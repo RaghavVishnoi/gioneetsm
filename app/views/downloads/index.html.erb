@@ -1,6 +1,5 @@
-
 <div id="content-wrapper">
-        
+     <div class="loader"><img src='/assets/gionee-loader.gif' style='width:100px;height:100px;margin-left:30%;margin-top:10%;display:none;'/></div>
           <div class="row">
             <div class="col-lg-12">
             <div class="main-box clearfix">
@@ -172,6 +171,7 @@ $("#download").attr("class","active")
 	    if(nd.length == 0 || nd == ""){
 	    	alert('please select atleast one nd!')
 	    }else{	
+	    	$('.loader img').css("display","block");
 			$.ajax({
 			url : "/downloads",
 			type : "POST",
@@ -179,7 +179,7 @@ $("#download").attr("class","active")
 			dataType : "text",
 
 			complete: function(){
-
+				$('.loader img').css("display","none");
 			},
 			success: function(data){
 
@@ -268,5 +268,4 @@ function mum(){
 
 
 
-</script>		
-
+</script>
